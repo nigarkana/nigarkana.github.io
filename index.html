@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nigar Sultana Kana — Software QA Analyst</title>
+<meta name="description" content="Software QA Analyst specializing in manual testing, test automation, and AI-assisted quality engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8;
+    --bg-card:#FFFFFF;
+    --ink:#1A1D1F;
+    --ink-soft:#4B4F52;
+    --meta:#6B7280;
+    --pass:#2D6A4F;
+    --pass-bg:#E7F2EC;
+    --accent:#B23A48;
+    --line:#E6E3DC;
+    --max:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(250,250,248,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; padding:16px 24px;}
+  .logo{font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; letter-spacing:0.02em;}
+  .logo span{color:var(--pass);}
+  .navlinks{display:flex; gap:28px; font-size:14px; font-weight:500;}
+  .navlinks a{text-decoration:none; color:var(--ink-soft); transition:color .15s;}
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--ink);}
+
+  header.hero{padding:96px 0 64px;}
+  .status-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    color:var(--pass); background:var(--pass-bg);
+    border:1px solid #cfe6da; border-radius:100px;
+    padding:5px 14px; margin-bottom:28px;
+  }
+  .status-tag::before{content:"●"; font-size:9px;}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(36px,6vw,56px);
+    font-weight:700;
+    line-height:1.08;
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style:normal; color:var(--pass);
+  }
+  .hero-sub{
+    font-size:18px; color:var(--ink-soft); max-width:560px; margin:0 0 36px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    padding:12px 22px; border-radius:8px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,0.18);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-1px);}
+
+  .section{padding:64px 0;}
+  .section-label{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--meta);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;
+  }
+  .section h2{
+    font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:600;
+    margin:0 0 36px;
+  }
+  hr.div{border:none; border-top:1px solid var(--line); margin:0;}
+
+  .skill-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:28px;
+  }
+  .skill-group h3{
+    font-size:14px; font-weight:600; color:var(--ink-soft);
+    margin:0 0 14px; text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .skill-group ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px;}
+  .skill-group li{font-size:15px; display:flex; align-items:center; gap:9px;}
+  .skill-group li::before{content:"›"; color:var(--pass); font-weight:700;}
+
+  .case{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px 30px;
+    margin-bottom:20px;
+  }
+  .case-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:10px; flex-wrap:wrap;}
+  .case-top h3{font-family:'Space Grotesk',sans-serif; font-size:19px; margin:0;}
+  .case-id{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--meta);}
+  .badge{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:500;
+    padding:4px 10px; border-radius:100px; white-space:nowrap;
+  }
+  .badge-pass{background:var(--pass-bg); color:var(--pass);}
+  .case p{color:var(--ink-soft); font-size:15px; margin:8px 0 14px;}
+  .tags{display:flex; gap:8px; flex-wrap:wrap;}
+  .tags span{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--ink-soft);
+    border:1px solid var(--line); border-radius:6px; padding:3px 9px;
+  }
+
+  .contact-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:8px;}
+  footer{padding:40px 0 60px; text-align:center;}
+  footer p{font-size:13.5px; color:var(--meta); font-family:'JetBrains Mono',monospace;}
+
+  @media (max-width:600px){
+    header.hero{padding:64px 0 48px;}
+    .navlinks{gap:18px; font-size:13px;}
+    .case-top{flex-direction:column;}
+  }
+  :focus-visible{outline:2px solid var(--pass); outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">NSK<span>.</span>qa</div>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="status-tag">STATUS: OPEN TO OPPORTUNITIES</div>
+    <h1>Nigar Sultana Kana<br>finds what breaks <em>before</em> users do.</h1>
+    <p class="hero-sub">Software QA Analyst specializing in manual testing, test case design, and defect management — now extending that rigor into AI-assisted quality engineering.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">View case studies →</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<hr class="div">
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-label">// capabilities</div>
+    <h2>Where I add coverage</h2>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h3>Core Testing</h3>
+        <ul>
+          <li>Manual Testing</li>
+          <li>Test Case Design</li>
+          <li>Regression Testing</li>
+          <li>UAT Testing</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Process & Tools</h3>
+        <ul>
+          <li>JIRA</li>
+          <li>Agile / Scrum</li>
+          <li>Defect Management</li>
+          <li>API Testing</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>AI-Assisted QA</h3>
+        <ul>
+          <li>AI-generated test cases</li>
+          <li>Synthetic test data</li>
+          <li>Self-healing automation</li>
+          <li>NL-to-script conversion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-label">// case studies</div>
+    <h2>Selected projects</h2>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-01</span>
+          <h3>Login Module Testing</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Designed and executed end-to-end test cases for authentication flows, covering valid/invalid credentials, session handling, and edge-case input validation. Logged and tracked defects through to resolution.</p>
+      <div class="tags"><span>Manual Testing</span><span>JIRA</span><span>Regression</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-02</span>
+          <h3>E-commerce Website Testing</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Performed functional, UAT, and regression testing across cart, checkout, and payment flows. Coordinated with developers on defect triage to keep release cycles on schedule.</p>
+      <div class="tags"><span>UAT</span><span>Regression</span><span>Agile</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-03</span>
+          <h3>API Testing Portfolio</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Built a portfolio of API test cases covering request/response validation, status codes, and error handling, supporting backend reliability ahead of release.</p>
+      <div class="tags"><span>API Testing</span><span>Test Design</span></div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-label">// get in touch</div>
+    <h2>Let's work together</h2>
+    <p style="color:var(--ink-soft); font-size:15.5px; max-width:520px;">Open to QA Analyst and Software Tester roles. Reach out directly or connect on LinkedIn.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:nigarkana@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/nigarkana" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>// built and maintained by Nigar Sultana Kana — 2026</p>
+</footer>
+
+</body>
+</html>
