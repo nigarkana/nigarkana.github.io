@@ -1,79 +1,217 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nigar Sultana Kana | Software QA Analyst</title>
+<meta name="description" content="Nigar Kana | Software QA Analyst | Manual Testing | Automation Testing | API Testing | AI-Assisted Quality Engineering">
+<title>Nigar Kana | Software QA Analyst | QA Portfolio</title>
 
 <style>
-body {
-    font-family: "Times New Roman", Times, serif;
-    background-color: #ffffff;
-    color: #222222;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-header {
-    background-color: #1f4e79;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
+html{
+    scroll-behavior:smooth;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 36px;
+body{
+    font-family:"Times New Roman", Times, serif;
+    background:#ffffff;
+    color:#222;
+    line-height:1.7;
 }
 
-header p {
-    font-size: 18px;
-    margin-top: 10px;
+header{
+    background:#1F4E79;
+    color:white;
+    padding:60px 10%;
 }
 
-.container {
-    width: 85%;
-    max-width: 1000px;
-    margin: auto;
-    padding: 30px 0;
+.status{
+    display:inline-block;
+    background:#eaf3ff;
+    color:#1F4E79;
+    padding:8px 15px;
+    border-radius:4px;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
-section {
-    margin-bottom: 40px;
+header h1{
+    font-size:52px;
+    margin-bottom:10px;
 }
 
-h2 {
-    color: #1f4e79;
-    border-bottom: 2px solid #1f4e79;
-    padding-bottom: 5px;
+header h2{
+    font-size:24px;
+    font-weight:normal;
+    margin-bottom:20px;
 }
 
-ul {
-    padding-left: 20px;
+header p{
+    max-width:900px;
+    font-size:18px;
 }
 
-.project {
-    border: 1px solid #dcdcdc;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+nav{
+    background:#f7f7f7;
+    border-bottom:1px solid #ddd;
+    padding:15px 10%;
+    position:sticky;
+    top:0;
+    z-index:999;
 }
 
-a {
-    color: #1f4e79;
-    text-decoration: none;
+nav ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
-a:hover {
-    text-decoration: underline;
+nav a{
+    text-decoration:none;
+    color:#1F4E79;
+    font-weight:bold;
 }
 
-footer {
-    text-align: center;
-    background-color: #f5f5f5;
-    padding: 20px;
-    margin-top: 40px;
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:60px 0;
+}
+
+section{
+    margin-bottom:70px;
+}
+
+h3{
+    color:#1F4E79;
+    font-size:32px;
+    margin-bottom:20px;
+    border-bottom:2px solid #1F4E79;
+    padding-bottom:10px;
+}
+
+.summary-box{
+    background:#fafafa;
+    border-left:5px solid #1F4E79;
+    padding:25px;
+}
+
+.terminal{
+    background:#f5f5f5;
+    border:1px solid #ddd;
+    padding:25px;
+    font-family:Courier New, monospace;
+    margin-top:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    border:1px solid #ddd;
+    padding:20px;
+    background:white;
+    border-radius:6px;
+}
+
+.card h4{
+    color:#1F4E79;
+    margin-bottom:10px;
+}
+
+.skills-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.skill-group{
+    border:1px solid #ddd;
+    padding:20px;
+}
+
+.skill-group h4{
+    color:#1F4E79;
+    margin-bottom:10px;
+}
+
+.project{
+    border:1px solid #ddd;
+    padding:25px;
+    margin-bottom:20px;
+}
+
+.project-title{
+    color:#1F4E79;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.tags{
+    margin-top:15px;
+}
+
+.tag{
+    display:inline-block;
+    background:#eaf3ff;
+    color:#1F4E79;
+    padding:5px 10px;
+    margin:4px;
+    border-radius:3px;
+    font-size:13px;
+}
+
+.education-item{
+    border-left:4px solid #1F4E79;
+    padding-left:20px;
+    margin-bottom:25px;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    display:inline-block;
+    margin:10px;
+    padding:12px 20px;
+    border:1px solid #1F4E79;
+    text-decoration:none;
+    color:#1F4E79;
+}
+
+.contact a:hover{
+    background:#1F4E79;
+    color:white;
+}
+
+footer{
+    background:#1F4E79;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:38px;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
 }
 </style>
 </head>
@@ -81,80 +219,299 @@ footer {
 <body>
 
 <header>
-    <h1>Nigar Sultana Kana</h1>
-    <p>Software QA Analyst</p>
+
+<div class="status">
+OPEN TO QA ANALYST • SOFTWARE TESTER • UAT ANALYST OPPORTUNITIES
+</div>
+
+<h1>Nigar Kana</h1>
+
+<h2>Software QA Analyst | Manual Testing | Automation Testing | API Testing | AI-Assisted Quality Engineering</h2>
+
+<p>
+Software QA Analyst specializing in manual testing, automation testing,
+test case design, API testing, regression testing, UAT, and defect
+management — now extending that rigor into AI-assisted quality engineering,
+including AI-generated test cases, synthetic test data, and intelligent
+test optimization.
+</p>
+
 </header>
+
+<nav>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#activity">Activity</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
 <div class="container">
 
-<section>
-    <h2>Professional Summary</h2>
-    <p>
-        Software QA Analyst with experience in manual testing,
-        test case design, defect tracking, regression testing,
-        UAT, and Agile software development environments.
-        Passionate about ensuring software quality and delivering
-        reliable user experiences.
-    </p>
+<section id="summary">
+<h3>Professional Summary</h3>
+
+<div class="summary-box">
+<p>
+Ensuring quality before release and confidence after deployment.
+</p>
+
+<div class="terminal">
+NSK.qa<br><br>
+
+run career-summary --verbose<br><br>
+
+experience .......... 5+ years // govt · telecom · enterprise<br>
+projects delivered ... 7+<br>
+certifications ....... ISTQB® · Atlassian Agile · Azure DevOps<br>
+current focus ........ AI-assisted quality engineering<br><br>
+
+✓ build complete — 0 critical defects found in this profile
+</div>
+</div>
 </section>
 
-<section>
-    <h2>Skills</h2>
-    <ul>
-        <li>Manual Testing</li>
-        <li>Functional Testing</li>
-        <li>Regression Testing</li>
-        <li>User Acceptance Testing (UAT)</li>
-        <li>JIRA</li>
-        <li>Agile Methodology</li>
-        <li>Test Case Design</li>
-        <li>Defect Management</li>
-        <li>Postman API Testing</li>
-    </ul>
+<section id="tools">
+<h3>Tools & Stack</h3>
+
+<div class="grid">
+
+<div class="card"><h4>Playwright</h4></div>
+<div class="card"><h4>Selenium</h4></div>
+<div class="card"><h4>Postman</h4></div>
+<div class="card"><h4>Python</h4></div>
+<div class="card"><h4>JavaScript</h4></div>
+<div class="card"><h4>JIRA</h4></div>
+<div class="card"><h4>Confluence</h4></div>
+<div class="card"><h4>Azure DevOps</h4></div>
+
+</div>
 </section>
 
-<section>
-    <h2>QA Portfolio Projects</h2>
+<section id="skills">
+<h3>Where I Add Coverage</h3>
 
-    <div class="project">
-        <h3>Login Module Testing</h3>
-        <p>Test scenarios, test cases and defect reports for login functionality.</p>
-    </div>
+<div class="skills-list">
 
-    <div class="project">
-        <h3>E-Commerce Website Testing</h3>
-        <p>Functional and regression testing documentation.</p>
-    </div>
+<div class="skill-group">
+<h4>Core Testing</h4>
+<ul>
+<li>Manual Testing</li>
+<li>Automation Testing</li>
+<li>Test Case Design</li>
+<li>Regression Testing</li>
+<li>UAT Testing</li>
+<li>API Testing</li>
+</ul>
+</div>
 
-    <div class="project">
-        <h3>API Testing Portfolio</h3>
-        <p>Postman collections, API validation and test results.</p>
-    </div>
+<div class="skill-group">
+<h4>Process & Tools</h4>
+<ul>
+<li>JIRA / Confluence</li>
+<li>Azure DevOps</li>
+<li>Agile / Scrum</li>
+<li>Defect Management</li>
+</ul>
+</div>
+
+<div class="skill-group">
+<h4>Automation</h4>
+<ul>
+<li>Playwright</li>
+<li>Selenium</li>
+<li>Postman</li>
+<li>Python & JavaScript</li>
+</ul>
+</div>
+
+<div class="skill-group">
+<h4>AI-Assisted QA</h4>
+<ul>
+<li>AI-generated test cases</li>
+<li>Synthetic test data</li>
+<li>Self-healing automation</li>
+<li>NL-to-script conversion</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<h3>Completed Projects</h3>
+
+<div class="project">
+<div class="project-title">Electronic Construction Permitting System</div>
+<p>
+Tested end-to-end workflows for an electronic construction permitting platform,
+covering permit application submission, document upload validation, approval
+routing, and status tracking.
+</p>
+<div class="tags">
+<span class="tag">Functional Testing</span>
+<span class="tag">Workflow Testing</span>
+<span class="tag">UAT</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-title">Microfinance Platform</div>
+<p>
+Validated loan origination, disbursement, repayment scheduling,
+and interest calculation modules.
+</p>
+<div class="tags">
+<span class="tag">Functional Testing</span>
+<span class="tag">Financial Calculations</span>
+<span class="tag">Regression</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-title">Sheiboi</div>
+<p>
+Performed functional and usability testing across core application flows,
+identifying defects in navigation, validation, and data persistence.
+</p>
+<div class="tags">
+<span class="tag">Manual Testing</span>
+<span class="tag">Usability</span>
+<span class="tag">Agile</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-title">DIRD Management Software</div>
+<p>
+Conducted system and regression testing for departmental record
+management workflows and reporting modules.
+</p>
+<div class="tags">
+<span class="tag">System Testing</span>
+<span class="tag">Regression</span>
+<span class="tag">Data Integrity</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-title">Hygia — Hospital Management System</div>
+<p>
+Tested patient registration, appointments, billing,
+and electronic medical record modules.
+</p>
+<div class="tags">
+<span class="tag">Healthcare Systems</span>
+<span class="tag">Functional Testing</span>
+<span class="tag">Access Control</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-title">Client Relationship Management (CRM)</div>
+<p>
+Verified lead-to-customer lifecycle workflows,
+contact management, and reporting dashboards.
+</p>
+<div class="tags">
+<span class="tag">CRM Testing</span>
+<span class="tag">Integration</span>
+<span class="tag">Regression</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-title">API Testing Portfolio</div>
+<p>
+Built API test cases covering request validation,
+response validation, status codes, and error handling.
+</p>
+<div class="tags">
+<span class="tag">API Testing</span>
+<span class="tag">Test Design</span>
+</div>
+</div>
 
 </section>
 
-<section>
-    <h2>Links</h2>
-    <p>
-        GitHub:
-        <a href="https://github.com/nigarkana" target="_blank">
-            github.com/nigarkana
-        </a>
-    </p>
+<section id="education">
+<h3>Education & Certifications</h3>
 
-    <p>
-        LinkedIn:
-        <a href="#" target="_blank">
-            Add Your LinkedIn Profile Here
-        </a>
-    </p>
+<div class="education-item">
+<h4>MSc in Applied Computer Science</h4>
+<p>Fairleigh Dickinson University, Vancouver, Canada (2024)</p>
+</div>
+
+<div class="education-item">
+<h4>MSc in Project Management</h4>
+<p>University of the West of Scotland (2023)</p>
+</div>
+
+<div class="education-item">
+<h4>BSc in Computer Science</h4>
+<p>Bachelor's Degree in Computer Science</p>
+</div>
+
+<div class="education-item">
+<h4>ISTQB Certified Tester</h4>
+<p>International Software Testing Qualifications Board</p>
+</div>
+
+<div class="education-item">
+<h4>Atlassian Agile Project Management Professional Certificate</h4>
+</div>
+
+<div class="education-item">
+<h4>Azure DevOps for Beginners</h4>
+</div>
+
+</section>
+
+<section id="activity">
+<h3>Recent Activity</h3>
+
+<div class="summary-box">
+<p>
+Preparing for Generative AI in Software Testing.
+Currently building hands-on expertise in AI-generated
+test case design, synthetic test data creation,
+AI-assisted defect analysis, and intelligent QA workflows.
+</p>
+</div>
+
+</section>
+
+<section id="contact">
+<h3>Let's Work Together</h3>
+
+<div class="contact">
+
+<p>
+Open to QA Analyst, Software Tester, UAT Analyst,
+and Quality Assurance opportunities.
+</p>
+
+<br>
+
+<a href="mailto:your-email@example.com">Email Me</a>
+
+<a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+
+<a href="https://github.com/nigarkana" target="_blank">GitHub</a>
+
+</div>
 </section>
 
 </div>
 
 <footer>
-    © 2026 Nigar Sultana Kana | Software QA Analyst
+Built and maintained by Nigar Kana © 2026
 </footer>
 
 </body>
 </html>
+```
