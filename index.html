@@ -84,3 +84,442 @@
   }
   .btn-primary{background:var(--pass); color:#fff;}
   .btn-primary:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(30,92,151,0.30);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--pass); color:var(--pass); transform:translateY(-1px);}
+
+  .summary-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(22,35,59,0.08);
+  }
+  .summary-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 18px;
+    background:var(--bg-raised);
+    border-bottom:1px solid var(--line);
+  }
+  .summary-bar span.dot-r{background:#C0524C;} .summary-bar span.dot-y{background:var(--amber);} .summary-bar span.dot-g{background:var(--pass);}
+  .summary-bar .dotw{width:10px; height:10px; border-radius:50%; display:inline-block;}
+  .summary-title{margin-left:8px; font-size:14px; color:var(--meta); font-style:italic;}
+  .summary-body{padding:22px 26px; font-size:16px; line-height:2;}
+  .summary-body .row{display:flex; justify-content:space-between; max-width:520px; border-bottom:1px dashed var(--line); padding:6px 0;}
+  .summary-body .row:last-child{border-bottom:none;}
+  .summary-body .label{color:var(--meta); font-weight:600;}
+  .summary-body .val{color:var(--pass); font-weight:700;}
+  .summary-body .val.amber{color:var(--amber);}
+  .summary-footnote{margin-top:10px; color:var(--meta); font-style:italic; font-size:14.5px;}
+
+  .section{padding:56px 0;}
+  .section-label{
+    font-size:14px; color:var(--amber); font-weight:700;
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;
+  }
+  .section h2{
+    font-family:'Times New Roman', Times, serif; font-size:28px; font-weight:700;
+    margin:0 0 32px; color:var(--ink);
+  }
+  hr.div{border:none; border-top:1px solid var(--line); margin:0;}
+
+  .stack-row{display:flex; flex-wrap:wrap; gap:12px;}
+  .stack-chip{
+    display:inline-flex; align-items:center; gap:9px;
+    background:var(--bg-card); border:1px solid var(--line);
+    border-radius:8px; padding:10px 16px;
+    font-size:16px; font-weight:600; color:var(--ink);
+    transition:border-color .15s, transform .15s;
+  }
+  .stack-chip:hover{border-color:var(--pass); transform:translateY(-2px);}
+  .stack-chip .sw{width:8px; height:8px; border-radius:2px; flex-shrink:0;}
+
+  .skill-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:28px;
+  }
+  .skill-group{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:10px;
+    padding:22px 24px;
+  }
+  .skill-group h3{
+    font-size:15px; font-weight:700; color:var(--pass);
+    margin:0 0 14px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .skill-group ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px;}
+  .skill-group li{font-size:16px; display:flex; align-items:center; gap:9px; color:var(--ink-soft);}
+  .skill-group li::before{content:"›"; color:var(--pass); font-weight:700;}
+
+  .case{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--pass);
+    border-radius:8px;
+    padding:26px 28px;
+    margin-bottom:18px;
+    transition:border-color .15s;
+    box-shadow:0 2px 6px rgba(22,35,59,0.04);
+  }
+  .case:hover{border-color:var(--pass);}
+  .case-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:10px; flex-wrap:wrap;}
+  .case-top h3{font-family:'Times New Roman', Times, serif; font-size:20px; margin:0; color:var(--ink);}
+  .case-id{font-size:13px; color:var(--meta); font-weight:600;}
+  .badge{
+    font-size:12.5px; font-weight:700;
+    padding:5px 12px; border-radius:100px; white-space:nowrap;
+  }
+  .badge-pass{background:var(--pass-bg); color:var(--pass); border:1px solid var(--pass-border);}
+  .case p{color:var(--ink-soft); font-size:16px; margin:8px 0 14px;}
+  .tags{display:flex; gap:8px; flex-wrap:wrap;}
+  .tags span{
+    font-size:12.5px; color:var(--ink-soft); font-weight:600;
+    border:1px solid var(--line); border-radius:6px; padding:4px 10px;
+    background:var(--bg-raised);
+  }
+
+  .edu-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--amber);
+    border-radius:8px;
+    padding:22px 26px;
+    margin-bottom:16px;
+  }
+  .edu-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; align-items:baseline;}
+  .edu-top h3{font-size:18px; margin:0; color:var(--ink); font-weight:700;}
+  .edu-year{font-size:14px; color:var(--amber); font-weight:700;}
+  .edu-card p{margin:6px 0 0; color:var(--ink-soft); font-size:15.5px;}
+
+  .activity-card{
+    background:var(--amber-bg);
+    border:1px solid var(--amber-border);
+    border-radius:10px;
+    padding:22px 26px;
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+  }
+  .activity-dot{
+    width:10px; height:10px; border-radius:50%; background:var(--amber);
+    margin-top:8px; flex-shrink:0; box-shadow:0 0 8px var(--amber);
+  }
+  .activity-card h3{margin:0 0 8px; font-size:19px; color:var(--amber); font-family:'Times New Roman', Times, serif;}
+  .activity-card p{margin:0; color:var(--ink-soft); font-size:15.5px;}
+
+  .contact-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px;}
+  footer{padding:36px 0 56px; text-align:center;}
+  footer p{font-size:14px; color:var(--meta); font-style:italic;}
+
+  @media (max-width:600px){
+    header.hero{padding:60px 0 44px;}
+    .navlinks{gap:16px; font-size:14px;}
+    .case-top{flex-direction:column;}
+    .summary-body{font-size:14.5px; padding:16px;}
+    .summary-body .row{flex-direction:column; gap:2px;}
+  }
+  :focus-visible{outline:2px solid var(--pass); outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">NSK<span>.</span>qa</div>
+    <div class="navlinks">
+      <a href="#stack">Stack</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#activity">Activity</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="status-tag"><span class="dot"></span>STATUS: OPEN TO OPPORTUNITIES</div>
+    <h1>Nigar Kana<br>finds what breaks <em>before</em> users do.</h1>
+    <p class="hero-sub">Software QA Analyst specializing in manual testing, automation testing, test case design, API testing, regression testing, UAT, and defect management — now extending that rigor into AI-assisted quality engineering, including AI-generated test cases, synthetic test data, and intelligent test optimization.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">View case studies &rarr;</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-bar">
+        <span class="dotw dot-r"></span><span class="dotw dot-y"></span><span class="dotw dot-g"></span>
+        <span class="summary-title">career-summary.run</span>
+      </div>
+      <div class="summary-body">
+        <div class="row"><span class="label">Experience</span><span class="val">5+ years — govt · telecom · enterprise</span></div>
+        <div class="row"><span class="label">Projects shipped</span><span class="val">7 passed</span></div>
+        <div class="row"><span class="label">Certifications</span><span class="val amber">ISTQB · Atlassian Agile · Azure DevOps</span></div>
+        <div class="row"><span class="label">Current focus</span><span class="val amber">AI-assisted quality engineering</span></div>
+      </div>
+      <div style="padding:0 26px 18px;">
+        <p class="summary-footnote">Build complete — 0 critical defects found in this profile.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<hr class="div">
+
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="section-label">// toolchain</div>
+    <h2>Tools & stack</h2>
+    <div class="stack-row">
+      <span class="stack-chip"><span class="sw" style="background:#3DDC84;"></span>Playwright</span>
+      <span class="stack-chip"><span class="sw" style="background:#FFB454;"></span>Selenium</span>
+      <span class="stack-chip"><span class="sw" style="background:#FF6C37;"></span>Postman</span>
+      <span class="stack-chip"><span class="sw" style="background:#4584B6;"></span>Python</span>
+      <span class="stack-chip"><span class="sw" style="background:#F7DF1E;"></span>JavaScript</span>
+      <span class="stack-chip"><span class="sw" style="background:#0052CC;"></span>JIRA</span>
+      <span class="stack-chip"><span class="sw" style="background:#172B4D;"></span>Confluence</span>
+      <span class="stack-chip"><span class="sw" style="background:#0078D7;"></span>Azure DevOps</span>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-label">// capabilities</div>
+    <h2>Where I add coverage</h2>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h3>Core Testing</h3>
+        <ul>
+          <li>Manual Testing</li>
+          <li>Automation Testing</li>
+          <li>Test Case Design</li>
+          <li>Regression Testing</li>
+          <li>UAT Testing</li>
+          <li>API Testing</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Process & Tools</h3>
+        <ul>
+          <li>JIRA / Confluence</li>
+          <li>Azure DevOps</li>
+          <li>Agile / Scrum</li>
+          <li>Defect Management</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Automation</h3>
+        <ul>
+          <li>Playwright</li>
+          <li>Selenium</li>
+          <li>Postman</li>
+          <li>Python &amp; JavaScript</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>AI-Assisted QA</h3>
+        <ul>
+          <li>AI-generated test cases</li>
+          <li>Synthetic test data</li>
+          <li>Self-healing automation</li>
+          <li>NL-to-script conversion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-label">// case studies</div>
+    <h2>Completed projects</h2>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-01</span>
+          <h3>Electronic Construction Permitting System</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Tested end-to-end workflows for an electronic construction permitting platform, covering permit application submission, document upload validation, approval routing, and status tracking. Verified role-based access for applicants, reviewers, and approving authorities.</p>
+      <div class="tags"><span>Functional Testing</span><span>Workflow Testing</span><span>UAT</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-02</span>
+          <h3>Microfinance Platform</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Validated loan origination, disbursement, repayment scheduling, and interest calculation modules. Focused on data accuracy in financial computations and edge cases around overdue payments and partial repayments.</p>
+      <div class="tags"><span>Functional Testing</span><span>Financial Calculations</span><span>Regression</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-03</span>
+          <h3>Sheiboi</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Performed functional and usability testing across core application flows, identifying defects in user navigation, form validation, and data persistence. Coordinated closely with developers during sprint cycles for rapid defect resolution.</p>
+      <div class="tags"><span>Manual Testing</span><span>Usability</span><span>Agile</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-04</span>
+          <h3>DIRD Management Software</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Conducted system and regression testing for departmental record and information management workflows, ensuring data integrity across record creation, updates, and reporting modules.</p>
+      <div class="tags"><span>System Testing</span><span>Regression</span><span>Data Integrity</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-05</span>
+          <h3>Hygia — Hospital Management System</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Tested patient registration, appointment scheduling, billing, and electronic medical record modules. Validated critical patient-data accuracy and access control to support safe clinical workflows.</p>
+      <div class="tags"><span>Healthcare Systems</span><span>Functional Testing</span><span>Access Control</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-06</span>
+          <h3>Client Relationship Management (CRM)</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Verified lead-to-customer lifecycle workflows, including contact management, pipeline stages, and notification triggers. Ensured data consistency across integrated sales and reporting dashboards.</p>
+      <div class="tags"><span>CRM Testing</span><span>Integration</span><span>Regression</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div>
+          <span class="case-id">CASE-07</span>
+          <h3>API Testing Portfolio</h3>
+        </div>
+        <span class="badge badge-pass">PASSED</span>
+      </div>
+      <p>Built a portfolio of API test cases covering request/response validation, status codes, and error handling, supporting backend reliability ahead of release.</p>
+      <div class="tags"><span>API Testing</span><span>Test Design</span></div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="section-label">// academic background & certifications</div>
+    <h2>Education</h2>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3>MSc in Applied Computer Science</h3>
+        <span class="edu-year">2024</span>
+      </div>
+      <p>Fairleigh Dickinson University, Vancouver, Canada</p>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3>MSc in Project Management</h3>
+        <span class="edu-year">2023</span>
+      </div>
+      <p>University of the West of Scotland</p>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3>BSc in Computer Science</h3>
+        <span class="edu-year"></span>
+      </div>
+      <p>Bachelor's degree in Computer Science</p>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3>ISTQB Certified Tester</h3>
+        <span class="edu-year"></span>
+      </div>
+      <p>International Software Testing Qualifications Board</p>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3>Atlassian Agile Project Management Professional Certificate</h3>
+        <span class="edu-year"></span>
+      </div>
+      <p>Professional certification in Agile project management practices</p>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <h3>Azure DevOps for Beginners</h3>
+        <span class="edu-year"></span>
+      </div>
+      <p>Foundational certification in Azure DevOps tooling and workflows</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="activity">
+  <div class="wrap">
+    <div class="section-label">// currently</div>
+    <h2>Recent activity</h2>
+
+    <div class="activity-card">
+      <div class="activity-dot"></div>
+      <div>
+        <h3>Preparing for Generative AI in Software Testing</h3>
+        <p>Currently building hands-on expertise in applying generative AI to software quality assurance — including AI-generated test case design, synthetic test data creation, and AI-assisted defect analysis — to bring next-generation efficiency to QA processes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-label">// get in touch</div>
+    <h2>Let's work together</h2>
+    <p style="color:var(--ink-soft); font-size:15.5px; max-width:520px;">Open to QA Analyst and Software Tester roles. Reach out directly or connect on LinkedIn.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:nigarkana@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/nigarkana/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>// built and maintained by Nigar Kana — 2026</p>
+</footer>
+
+</body>
+</html>
