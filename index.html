@@ -153,6 +153,15 @@
   .proj-tags span{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);
     background:var(--surface-2);padding:4px 9px;border-radius:5px}
 
+  /* Featured project card (CASE-08 — real, runnable, public code) */
+  .proj-featured{grid-column:1 / -1;border-color:var(--accent-dim);
+    background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%)}
+  .proj-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+  .proj-links a{font-family:var(--mono);font-size:.84rem;color:var(--accent);
+    border-bottom:1px solid var(--accent-dim);padding-bottom:2px;transition:opacity .15s}
+  .proj-links a:hover{opacity:.75}
+  .ci-badge{height:20px;display:block}
+
   /* ---------- Education / timeline ---------- */
   .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
   .edu-col h3.coltitle{font-family:var(--mono);font-size:.82rem;color:var(--ink-faint);
@@ -229,7 +238,7 @@
 
       <div class="stats">
         <div class="stat"><div class="k">Experience</div><div class="v"><strong>5+ years</strong> · govt · telecom · enterprise</div></div>
-        <div class="stat"><div class="k">Projects</div><div class="v"><strong>7</strong> shipped &amp; validated</div></div>
+        <div class="stat"><div class="k">Projects</div><div class="v"><strong>8</strong> shipped &amp; validated</div></div>
         <div class="stat"><div class="k">Certifications</div><div class="v">ISTQB · Atlassian Agile · Azure DevOps</div></div>
         <div class="stat"><div class="k">Current focus</div><div class="v">AI-assisted quality engineering</div></div>
       </div>
@@ -302,7 +311,7 @@
     <div class="wrap">
       <span class="eyebrow">// case studies</span>
       <h2>Projects</h2>
-      <p class="section-sub">Seven end-to-end testing engagements across healthcare, finance, government, and enterprise platforms.</p>
+      <p class="section-sub">Eight end-to-end testing engagements across healthcare, finance, government, and enterprise platforms — including a live, public automation suite with CI.</p>
 
       <div class="proj-grid">
         <article class="proj">
@@ -352,6 +361,17 @@
           <h3>API Testing Portfolio</h3>
           <p>Built a portfolio of API test cases covering request/response validation, status codes, and error handling, supporting backend reliability ahead of release.</p>
           <div class="proj-tags"><span>API Testing</span><span>Test Design</span></div>
+        </article>
+
+        <article class="proj proj-featured">
+          <div class="proj-head"><span class="proj-id">CASE-08</span><span class="pass">PASSED</span></div>
+          <h3>SauceDemo Playwright Automation Suite</h3>
+          <p>Built and shipped a real end-to-end automation suite from scratch — 26 test cases across authentication, product catalog, checkout, and API layers, using the Page Object Model. Wired up GitHub Actions to run the full suite across Chromium, Firefox, and WebKit on every push and pull request, with HTML reports uploaded as build artifacts.</p>
+          <div class="proj-tags"><span>Playwright</span><span>Page Object Model</span><span>CI/CD</span><span>API Testing</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/nigarkana/saucedemo-playwright" target="_blank" rel="noopener">View on GitHub →</a>
+            <img src="https://github.com/nigarkana/saucedemo-playwright/actions/workflows/playwright.yml/badge.svg" alt="Playwright Tests CI status badge" class="ci-badge">
+          </div>
         </article>
       </div>
     </div>
