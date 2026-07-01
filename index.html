@@ -1,479 +1,948 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nigar Kana — Software QA Analyst</title>
-<meta name="description" content="Nigar Kana is a Software QA Analyst with 5+ years across government, telecom, and enterprise. Specializing in manual testing, automation (Playwright, Selenium), API testing, regression, UAT, and AI-assisted quality engineering. ISTQB certified.">
-<meta name="author" content="Nigar Kana">
-<meta name="keywords" content="QA Analyst, Software Tester, Quality Assurance, Manual Testing, Automation Testing, Playwright, Selenium, API Testing, Postman, Regression Testing, UAT, ISTQB, Azure DevOps, JIRA, Agile, AI-assisted QA, Vancouver">
-
-<!-- Open Graph / social -->
-<meta property="og:type" content="profile">
-<meta property="og:title" content="Nigar Kana — Software QA Analyst">
-<meta property="og:description" content="QA Analyst specializing in manual & automation testing, API testing, regression, UAT, and AI-assisted quality engineering. ISTQB certified. Open to opportunities.">
-<meta property="og:url" content="https://nigarkana.github.io/">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://nigarkana.github.io/">
-
-<!-- Structured data for recruiters & search -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Nigar Kana",
-  "jobTitle": "Software QA Analyst",
-  "url": "https://nigarkana.github.io/",
-  "email": "mailto:nigarkana@gmail.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/nigarkana/",
-    "https://github.com/nigarkana/"
-  ],
-  "address": { "@type": "PostalAddress", "addressLocality": "Vancouver", "addressCountry": "CA" },
-  "alumniOf": [
-    { "@type": "CollegeOrUniversity", "name": "Fairleigh Dickinson University" },
-    { "@type": "CollegeOrUniversity", "name": "University of the West of Scotland" }
-  ],
-  "knowsAbout": ["Software Testing","Manual Testing","Automation Testing","API Testing","Regression Testing","UAT","Playwright","Selenium","Postman","Python","JavaScript","Azure DevOps","JIRA","Agile","AI-assisted QA"],
-  "hasCredential": ["ISTQB Certified Tester","Atlassian Agile Project Management Professional","Azure DevOps"]
-}
-</script>
-
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --bg:#eaf3fb;
-    --surface:#f7fbfe;
-    --surface-2:#dfedf9;
-    --line:#c3dcef;
-    --ink:#15293b;
-    --ink-soft:#46647d;
-    --ink-faint:#7691a6;
-    --accent:#1f8fd6;      /* pass / signal blue, used sparingly */
-    --accent-dim:#bfe0f5;
-    --radius:10px;
-    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
-    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:72px}
-  body{
-    background:var(--bg);color:var(--ink);
-    font-family:var(--sans);line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+/* ─── TOKENS ──────────────────────────────────────────────────── */
+:root {
+  --bg:         #080c18;
+  --bg2:        #0d1224;
+  --bg3:        #111729;
+  --glass:      rgba(255,255,255,0.045);
+  --glass-hi:   rgba(255,255,255,0.10);
+  --glass-b:    rgba(255,255,255,0.09);
+  --cyan:       #00d4ff;
+  --cyan-dim:   rgba(0,212,255,0.15);
+  --cyan-glow:  rgba(0,212,255,0.35);
+  --purple:     #7c6aff;
+  --purple-dim: rgba(124,106,255,0.12);
+  --green:      #10d982;
+  --text:       #e2e8f0;
+  --text-2:     #94a3b8;
+  --text-3:     #5b6e8c;
+  --border:     rgba(255,255,255,0.08);
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:  0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.4);
+  --shadow-card:0 0 0 1px var(--border),
+                0 4px 12px rgba(0,0,0,0.5),
+                0 16px 48px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.07);
+  --radius:     14px;
+  --radius-sm:  8px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
 
-  /* ---------- Sticky nav ---------- */
-  header.nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(234,243,251,.85);backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .brand{font-family:var(--mono);font-weight:700;font-size:1.05rem;letter-spacing:.5px}
-  .brand span{color:var(--accent)}
-  .nav-links{display:flex;gap:6px;flex-wrap:wrap}
-  .nav-links a{
-    font-family:var(--mono);font-size:.82rem;color:var(--ink-soft);
-    padding:7px 11px;border-radius:6px;transition:color .15s,background .15s;
-  }
-  .nav-links a:hover,.nav-links a:focus-visible{color:var(--ink);background:var(--surface-2)}
-  .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--ink);
-    border-radius:6px;padding:6px 10px;font-family:var(--mono);cursor:pointer}
+/* ─── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
 
-  /* ---------- Section scaffolding ---------- */
-  section{padding:84px 0;border-bottom:1px solid var(--line)}
-  .eyebrow{font-family:var(--mono);font-size:.78rem;color:var(--accent);
-    letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;display:block}
-  h2{font-size:1.9rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
-  .section-sub{color:var(--ink-soft);max-width:60ch;margin-bottom:36px}
+/* ─── NOISE TEXTURE OVERLAY ───────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
 
-  /* ---------- Hero ---------- */
-  .hero{padding:96px 0 88px;border-bottom:1px solid var(--line)}
-  .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
-    font-size:.78rem;color:var(--accent);border:1px solid var(--accent-dim);
-    background:rgba(31,143,214,.06);padding:6px 13px;border-radius:999px;margin-bottom:28px}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
-    box-shadow:0 0 0 0 rgba(31,143,214,.5);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,143,214,.5)}70%{box-shadow:0 0 0 8px rgba(31,143,214,0)}100%{box-shadow:0 0 0 0 rgba(31,143,214,0)}}
-  .hero h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:800;line-height:1.08;
-    letter-spacing:-.03em;margin-bottom:22px;max-width:18ch}
-  .hero h1 em{font-style:normal;color:var(--accent)}
-  .hero p.lede{font-size:1.12rem;color:var(--ink-soft);max-width:64ch;margin-bottom:32px}
-  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{font-family:var(--mono);font-size:.9rem;padding:12px 20px;border-radius:8px;
-    border:1px solid var(--line);transition:all .15s;cursor:pointer}
-  .btn-primary{background:var(--accent);color:#ffffff;font-weight:600;border-color:var(--accent)}
-  .btn-primary:hover{background:#1678b5}
-  .btn-ghost:hover{background:var(--surface-2);border-color:var(--ink-faint)}
+/* ─── AMBIENT ORBS ────────────────────────────────────────────── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+.orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%); top: -100px; left: -100px; animation-delay: 0s; }
+.orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,106,255,0.06) 0%, transparent 70%); bottom: -150px; right: -150px; animation-delay: -6s; }
+.orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(16,217,130,0.05) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: -12s; }
+@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px, 20px) scale(1.08); } }
 
-  /* stat strip */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:52px}
-  .stat{background:var(--surface);padding:22px 20px}
-  .stat .k{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);
-    letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-  .stat .v{font-size:1.02rem;font-weight:600}
-  .stat .v strong{color:var(--accent)}
+/* ─── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  background: rgba(8,12,24,0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 8px 32px rgba(0,0,0,0.4);
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px var(--cyan-glow);
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 12px rgba(0,212,255,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+}
 
-  /* ---------- Skills ---------- */
-  .skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .skill-card{background:var(--surface);border:1px solid var(--line);
-    border-radius:var(--radius);padding:22px}
-  .skill-card h3{font-family:var(--mono);font-size:.85rem;color:var(--accent);
-    letter-spacing:.5px;margin-bottom:14px}
-  .skill-card ul{list-style:none}
-  .skill-card li{font-size:.92rem;color:var(--ink-soft);padding:5px 0;
-    border-bottom:1px dashed var(--line)}
-  .skill-card li:last-child{border-bottom:none}
+/* ─── LAYOUT WRAPPER ──────────────────────────────────────────── */
+main { position: relative; z-index: 1; }
+section { padding: 100px 40px; max-width: 1120px; margin: 0 auto; }
 
-  /* tool tags */
-  .tools{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
-  .tag{font-family:var(--mono);font-size:.82rem;background:var(--surface-2);
-    border:1px solid var(--line);color:var(--ink-soft);padding:7px 13px;border-radius:6px}
+/* ─── EYEBROW LABELS ──────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan-glow);
+}
 
-  /* ---------- Projects ---------- */
-  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .proj{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    padding:24px;transition:border-color .15s,transform .15s}
-  .proj:hover{border-color:var(--accent-dim);transform:translateY(-2px)}
-  .proj-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-  .proj-id{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);letter-spacing:1px}
-  .pass{font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--accent);
-    border:1px solid var(--accent-dim);background:rgba(31,143,214,.07);
-    padding:3px 9px;border-radius:999px;letter-spacing:1px}
-  .proj h3{font-size:1.12rem;margin-bottom:10px;letter-spacing:-.01em}
-  .proj p{font-size:.92rem;color:var(--ink-soft);margin-bottom:16px}
-  .proj-tags{display:flex;flex-wrap:wrap;gap:7px}
-  .proj-tags span{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);
-    background:var(--surface-2);padding:4px 9px;border-radius:5px}
+/* ─── HERO ────────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-top: 120px;
+  position: relative;
+}
+.hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-kicker span {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan), 0 0 24px var(--cyan-glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 68px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+.hero-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(0,212,255,0.2));
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-2);
+  max-width: 600px;
+  margin-bottom: 44px;
+  line-height: 1.75;
+}
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(0,212,255,0.9) 0%, rgba(0,180,220,0.9) 100%);
+  color: #060a14;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(0,212,255,0.3), 0 1px 0 rgba(255,255,255,0.2) inset, 0 -1px 0 rgba(0,0,0,0.2) inset;
+  transition: all 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,212,255,0.45), 0 1px 0 rgba(255,255,255,0.3) inset;
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  background: var(--glass);
+  border: 1px solid var(--glass-b);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  background: var(--glass-hi);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.1);
+}
 
-  /* Featured project card (CASE-08 — real, runnable, public code) */
-  .proj-featured{grid-column:1 / -1;border-color:var(--accent-dim);
-    background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%)}
-  .proj-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px}
-  .proj-links a{font-family:var(--mono);font-size:.84rem;color:var(--accent);
-    border-bottom:1px solid var(--accent-dim);padding-bottom:2px;transition:opacity .15s}
-  .proj-links a:hover{opacity:.75}
-  .ci-badge{height:20px;display:block}
+/* ─── STATS ROW ───────────────────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 72px;
+}
+.stat-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.stat-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+}
+.stat-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.2), 0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-shadow: 0 0 20px var(--cyan-glow);
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
 
-  /* ---------- Education / timeline ---------- */
-  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-  .edu-col h3.coltitle{font-family:var(--mono);font-size:.82rem;color:var(--ink-faint);
-    letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
-  .edu-item{border-left:2px solid var(--line);padding:0 0 22px 20px;position:relative}
-  .edu-item::before{content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;
-    border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
-  .edu-item:last-child{padding-bottom:0}
-  .edu-item .yr{font-family:var(--mono);font-size:.74rem;color:var(--accent);margin-bottom:3px}
-  .edu-item .deg{font-weight:600;font-size:1rem;margin-bottom:2px}
-  .edu-item .org{font-size:.88rem;color:var(--ink-soft)}
+/* ─── SECTION HEADING ─────────────────────────────────────────── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-2);
+  max-width: 580px;
+  margin-bottom: 52px;
+  line-height: 1.7;
+}
 
-  /* ---------- Activity ---------- */
-  .activity{background:var(--surface);border:1px solid var(--line);
-    border-left:3px solid var(--accent);border-radius:var(--radius);padding:26px}
-  .activity h3{font-size:1.1rem;margin-bottom:10px}
-  .activity p{color:var(--ink-soft);font-size:.95rem;max-width:70ch}
+/* ─── SKILLS ──────────────────────────────────────────────────── */
+#skills { padding-top: 40px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.skill-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s;
+}
+.skill-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+.skill-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(0,212,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.skill-card:hover {
+  transform: translateY(-6px) perspective(800px) rotateX(1deg);
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.18), 0 20px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.skill-card-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.skill-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.skill-icon.cyan  { background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(0,212,255,0.08)); border: 1px solid rgba(0,212,255,0.25); }
+.skill-icon.purple{ background: linear-gradient(135deg, rgba(124,106,255,0.25), rgba(124,106,255,0.08)); border: 1px solid rgba(124,106,255,0.25); }
+.skill-icon.green { background: linear-gradient(135deg, rgba(16,217,130,0.25), rgba(16,217,130,0.08)); border: 1px solid rgba(16,217,130,0.25); }
+.skill-icon.amber { background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(251,191,36,0.08)); border: 1px solid rgba(251,191,36,0.25); }
+.skill-card-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.skill-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 5px 11px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-2);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: all 0.15s;
+}
+.tag:hover {
+  background: var(--cyan-dim);
+  border-color: rgba(0,212,255,0.3);
+  color: var(--cyan);
+  box-shadow: 0 0 8px rgba(0,212,255,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+}
 
-  /* ---------- Contact ---------- */
-  #contact{text-align:center;border-bottom:none}
-  #contact h2{margin-bottom:14px}
-  #contact p{color:var(--ink-soft);max-width:52ch;margin:0 auto 30px}
-  .contact-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* ─── PROJECTS ────────────────────────────────────────────────── */
+#projects { background: none; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.project-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.project-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+}
+.project-card.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(124,106,255,0.04) 100%);
+  border-color: rgba(0,212,255,0.15);
+}
+.project-card.featured::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(0,212,255,0.06) 0%, transparent 55%);
+  pointer-events: none;
+}
+.project-card:hover {
+  transform: translateY(-5px) perspective(900px) rotateX(0.8deg);
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.15), 0 24px 64px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.09);
+}
+.project-meta {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.case-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+}
+.pass-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(16,217,130,0.12);
+  border: 1px solid rgba(16,217,130,0.3);
+  color: var(--green);
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 8px rgba(16,217,130,0.1), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.project-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.project-desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  flex: 1;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ptag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: var(--purple-dim);
+  border: 1px solid rgba(124,106,255,0.18);
+  color: #a89fff;
+  font-weight: 500;
+}
+.project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cyan);
+  margin-top: 4px;
+  transition: gap 0.2s;
+}
+.project-link:hover { gap: 10px; }
+.ci-badge { margin-top: 4px; }
+.ci-badge img { height: 20px; border-radius: 4px; }
 
-  footer{padding:30px 0 50px;text-align:center}
-  footer p{font-family:var(--mono);font-size:.78rem;color:var(--ink-faint)}
+/* ─── EDUCATION ───────────────────────────────────────────────── */
+#education { }
+.edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.edu-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.edu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+}
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px rgba(124,106,255,0.2), 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.edu-card-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.edu-item { margin-bottom: 20px; }
+.edu-item:last-child { margin-bottom: 0; }
+.edu-year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  margin-bottom: 4px;
+}
+.edu-degree { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+.edu-school { font-size: 13px; color: var(--text-2); }
+.cert-item {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 16px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.cert-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.cert-badge {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+.cert-badge.istqb   { background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,180,255,0.1)); border: 1px solid rgba(0,212,255,0.25); color: var(--cyan); }
+.cert-badge.atl     { background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(251,191,36,0.08)); border: 1px solid rgba(251,191,36,0.25); color: #fbbf24; }
+.cert-badge.azure   { background: linear-gradient(135deg, rgba(124,106,255,0.2), rgba(124,106,255,0.08)); border: 1px solid rgba(124,106,255,0.25); color: var(--purple); }
+.cert-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+.cert-org  { font-size: 12px; color: var(--text-2); }
 
-  /* ---------- Responsive ---------- */
-  @media (max-width:860px){
-    .skill-grid{grid-template-columns:repeat(2,1fr)}
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .proj-grid{grid-template-columns:1fr}
-    .edu-grid{grid-template-columns:1fr;gap:30px}
-  }
-  @media (max-width:620px){
-    .nav-links{display:none;position:absolute;top:60px;left:0;right:0;
-      flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);
-      padding:10px 24px}
-    .nav-links.open{display:flex}
-    .nav-toggle{display:block}
-    .skill-grid,.stats{grid-template-columns:1fr}
-    section{padding:60px 0}
-  }
+/* ─── ACTIVITY ────────────────────────────────────────────────── */
+#activity { }
+.activity-card {
+  background: var(--glass);
+  border: 1px solid rgba(0,212,255,0.1);
+  border-radius: var(--radius);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.activity-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
+}
+.activity-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at bottom right, rgba(124,106,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.activity-title {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 600;
+  margin-bottom: 14px;
+}
+.activity-body { font-size: 15px; color: var(--text-2); line-height: 1.8; max-width: 700px; }
+
+/* ─── CONTACT ─────────────────────────────────────────────────── */
+#contact { text-align: center; }
+.contact-inner {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 72px 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  max-width: 700px;
+  margin: 0 auto;
+}
+.contact-inner::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
+}
+.contact-inner::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top center, rgba(0,212,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.contact-headline {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.contact-sub { font-size: 16px; color: var(--text-2); margin-bottom: 36px; }
+.contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── FOOTER ──────────────────────────────────────────────────── */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 24px 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* ─── DIVIDER ─────────────────────────────────────────────────── */
+.section-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  position: relative; z-index: 1;
+  max-width: 1120px; margin: 0 auto;
+}
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  section { padding: 80px 20px; }
+  .stats-row, .skills-grid, .projects-grid, .edu-grid { grid-template-columns: 1fr; }
+  .project-card.featured { grid-column: 1; }
+}
+
+/* ─── REDUCED MOTION ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="brand">NSK<span>.qa</span></a>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">menu</button>
-    <nav class="nav-links" id="navlinks">
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#activity">Activity</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<!-- Ambient Atmosphere -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-logo">NSK.qa</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#activity">Activity</a>
+    <a href="#contact">Contact</a>
   </div>
-</header>
+  <div class="nav-badge">Open to Opportunities</div>
+</nav>
 
-<main id="top">
+<main>
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Introduction">
-    <div class="wrap">
-      <span class="status"><span class="dot"></span>Open to opportunities</span>
-      <h1>Nigar Kana finds what breaks <em>before</em> users do.</h1>
-      <p class="lede">Software QA Analyst with 5+ years across government, telecom, and enterprise systems. I specialize in manual and automation testing, test case design, API testing, regression, and UAT — and I'm extending that rigor into AI-assisted quality engineering.</p>
-      <div class="cta-row">
-        <a href="#projects" class="btn btn-primary">View projects</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-kicker"><span></span> Software QA Analyst · Vancouver, Canada</div>
+  <h1 class="hero-headline">
+    Nigar Kana finds what breaks<br><em>before users do.</em>
+  </h1>
+  <p class="hero-sub">
+    5+ years across government, telecom, and enterprise systems. Specialising in manual and automation testing, API testing, regression, UAT — and extending that rigour into AI-assisted quality engineering.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View Case Studies →</a>
+    <a href="#contact" class="btn-secondary">Get in Touch</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card reveal">
+      <div class="stat-value">5+</div>
+      <div class="stat-label">Years of Experience<br>Govt · Telecom · Enterprise</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-value">8</div>
+      <div class="stat-label">Projects Shipped<br>&amp; Validated</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Certifications<br>ISTQB · Atlassian · Azure</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-value">26</div>
+      <div class="stat-label">Automated Test Cases<br>Live CI/CD Suite</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── SKILLS ────────────────────────────────────────────────── -->
+<section id="skills">
+  <div class="eyebrow">// capabilities</div>
+  <h2 class="section-title">Skills &amp; Coverage</h2>
+  <p class="section-sub">Coverage across the testing lifecycle — from manual exploratory work to automated suites and emerging AI-assisted methods.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-header">
+        <div class="skill-icon cyan">🎯</div>
+        <div class="skill-card-title">Core Testing</div>
       </div>
-
-      <div class="stats">
-        <div class="stat"><div class="k">Experience</div><div class="v"><strong>5+ years</strong> · govt · telecom · enterprise</div></div>
-        <div class="stat"><div class="k">Projects</div><div class="v"><strong>8</strong> shipped &amp; validated</div></div>
-        <div class="stat"><div class="k">Certifications</div><div class="v">ISTQB · Atlassian Agile · Azure DevOps</div></div>
-        <div class="stat"><div class="k">Current focus</div><div class="v">AI-assisted quality engineering</div></div>
+      <div class="skill-tags">
+        <span class="tag">Manual Testing</span>
+        <span class="tag">Automation Testing</span>
+        <span class="tag">Test Case Design</span>
+        <span class="tag">Regression Testing</span>
+        <span class="tag">UAT Testing</span>
+        <span class="tag">API Testing</span>
       </div>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" aria-label="Skills and tools">
-    <div class="wrap">
-      <span class="eyebrow">// capabilities</span>
-      <h2>Skills &amp; coverage</h2>
-      <p class="section-sub">Where I add coverage across the testing lifecycle — from manual exploratory work to automated suites and emerging AI-assisted methods.</p>
-
-      <div class="skill-grid">
-        <div class="skill-card">
-          <h3>Core Testing</h3>
-          <ul>
-            <li>Manual Testing</li>
-            <li>Automation Testing</li>
-            <li>Test Case Design</li>
-            <li>Regression Testing</li>
-            <li>UAT Testing</li>
-            <li>API Testing</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Process &amp; Tools</h3>
-          <ul>
-            <li>JIRA / Confluence</li>
-            <li>Azure DevOps</li>
-            <li>Agile / Scrum</li>
-            <li>Defect Management</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Automation</h3>
-          <ul>
-            <li>Playwright</li>
-            <li>Selenium</li>
-            <li>Postman</li>
-            <li>Python &amp; JavaScript</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>AI-Assisted QA</h3>
-          <ul>
-            <li>AI-generated test cases</li>
-            <li>Synthetic test data</li>
-            <li>Self-healing automation</li>
-            <li>NL-to-script conversion</li>
-          </ul>
-        </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-card-header">
+        <div class="skill-icon purple">⚙️</div>
+        <div class="skill-card-title">Process &amp; Tools</div>
       </div>
+      <div class="skill-tags">
+        <span class="tag">JIRA</span>
+        <span class="tag">Confluence</span>
+        <span class="tag">Azure DevOps</span>
+        <span class="tag">Agile / Scrum</span>
+        <span class="tag">Defect Management</span>
+      </div>
+    </div>
 
-      <div class="tools" aria-label="Toolchain">
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-card-header">
+        <div class="skill-icon green">🤖</div>
+        <div class="skill-card-title">Automation Stack</div>
+      </div>
+      <div class="skill-tags">
         <span class="tag">Playwright</span>
         <span class="tag">Selenium</span>
         <span class="tag">Postman</span>
         <span class="tag">Python</span>
         <span class="tag">JavaScript</span>
-        <span class="tag">JIRA</span>
-        <span class="tag">Confluence</span>
-        <span class="tag">Azure DevOps</span>
+        <span class="tag">Page Object Model</span>
       </div>
     </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" aria-label="Projects">
-    <div class="wrap">
-      <span class="eyebrow">// case studies</span>
-      <h2>Projects</h2>
-      <p class="section-sub">Eight end-to-end testing engagements across healthcare, finance, government, and enterprise platforms — including a live, public automation suite with CI.</p>
-
-      <div class="proj-grid">
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-01</span><span class="pass">PASSED</span></div>
-          <h3>Electronic Construction Permitting System</h3>
-          <p>Tested end-to-end workflows covering permit application submission, document upload validation, approval routing, and status tracking. Verified role-based access for applicants, reviewers, and approving authorities.</p>
-          <div class="proj-tags"><span>Functional Testing</span><span>Workflow Testing</span><span>UAT</span></div>
-        </article>
-
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-02</span><span class="pass">PASSED</span></div>
-          <h3>Microfinance Platform</h3>
-          <p>Validated loan origination, disbursement, repayment scheduling, and interest calculation modules. Focused on data accuracy in financial computations and edge cases around overdue and partial repayments.</p>
-          <div class="proj-tags"><span>Functional Testing</span><span>Financial Calculations</span><span>Regression</span></div>
-        </article>
-
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-03</span><span class="pass">PASSED</span></div>
-          <h3>Sheiboi</h3>
-          <p>Performed functional and usability testing across core flows, identifying defects in navigation, form validation, and data persistence. Coordinated closely with developers during sprint cycles for rapid defect resolution.</p>
-          <div class="proj-tags"><span>Manual Testing</span><span>Usability</span><span>Agile</span></div>
-        </article>
-
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-04</span><span class="pass">PASSED</span></div>
-          <h3>DIRD Management Software</h3>
-          <p>Conducted system and regression testing for departmental record and information management workflows, ensuring data integrity across record creation, updates, and reporting modules.</p>
-          <div class="proj-tags"><span>System Testing</span><span>Regression</span><span>Data Integrity</span></div>
-        </article>
-
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-05</span><span class="pass">PASSED</span></div>
-          <h3>Hygia — Hospital Management System</h3>
-          <p>Tested patient registration, appointment scheduling, billing, and electronic medical record modules. Validated critical patient-data accuracy and access control to support safe clinical workflows.</p>
-          <div class="proj-tags"><span>Healthcare Systems</span><span>Functional Testing</span><span>Access Control</span></div>
-        </article>
-
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-06</span><span class="pass">PASSED</span></div>
-          <h3>Client Relationship Management (CRM)</h3>
-          <p>Verified lead-to-customer lifecycle workflows including contact management, pipeline stages, and notification triggers. Ensured data consistency across integrated sales and reporting dashboards.</p>
-          <div class="proj-tags"><span>CRM Testing</span><span>Integration</span><span>Regression</span></div>
-        </article>
-
-        <article class="proj">
-          <div class="proj-head"><span class="proj-id">CASE-07</span><span class="pass">PASSED</span></div>
-          <h3>API Testing Portfolio</h3>
-          <p>Built a portfolio of API test cases covering request/response validation, status codes, and error handling, supporting backend reliability ahead of release.</p>
-          <div class="proj-tags"><span>API Testing</span><span>Test Design</span></div>
-        </article>
-
-        <article class="proj proj-featured">
-          <div class="proj-head"><span class="proj-id">CASE-08</span><span class="pass">PASSED</span></div>
-          <h3>SauceDemo Playwright Automation Suite</h3>
-          <p>Built and shipped a real end-to-end automation suite from scratch — 26 test cases across authentication, product catalog, checkout, and API layers, using the Page Object Model. Wired up GitHub Actions to run the full suite across Chromium, Firefox, and WebKit on every push and pull request, with HTML reports uploaded as build artifacts.</p>
-          <div class="proj-tags"><span>Playwright</span><span>Page Object Model</span><span>CI/CD</span><span>API Testing</span></div>
-          <div class="proj-links">
-            <a href="https://github.com/nigarkana/saucedemo-playwright" target="_blank" rel="noopener">View on GitHub →</a>
-            <img src="https://github.com/nigarkana/saucedemo-playwright/actions/workflows/playwright.yml/badge.svg" alt="Playwright Tests CI status badge" class="ci-badge">
-          </div>
-        </article>
+    <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-card-header">
+        <div class="skill-icon amber">✨</div>
+        <div class="skill-card-title">AI-Assisted QA</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">AI-generated Test Cases</span>
+        <span class="tag">Synthetic Test Data</span>
+        <span class="tag">Self-healing Automation</span>
+        <span class="tag">NL-to-Script Conversion</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- EDUCATION -->
-  <section id="education" aria-label="Education and certifications">
-    <div class="wrap">
-      <span class="eyebrow">// background</span>
-      <h2>Education &amp; certifications</h2>
-      <p class="section-sub">Graduate study in computer science and project management, backed by recognized QA and DevOps certifications.</p>
+<div class="section-divider"></div>
 
-      <div class="edu-grid">
-        <div class="edu-col">
-          <h3 class="coltitle">Education</h3>
-          <div class="edu-item">
-            <div class="yr">2024</div>
-            <div class="deg">MSc in Applied Computer Science</div>
-            <div class="org">Fairleigh Dickinson University, Vancouver, Canada</div>
-          </div>
-          <div class="edu-item">
-            <div class="yr">2023</div>
-            <div class="deg">MSc in Project Management</div>
-            <div class="org">University of the West of Scotland</div>
-          </div>
-          <div class="edu-item">
-            <div class="yr">—</div>
-            <div class="deg">BSc in Computer Science</div>
-            <div class="org">Bachelor's degree in Computer Science</div>
-          </div>
+<!-- ── PROJECTS ──────────────────────────────────────────────── -->
+<section id="projects">
+  <div class="eyebrow">// case studies</div>
+  <h2 class="section-title">Projects</h2>
+  <p class="section-sub">Eight end-to-end testing engagements across healthcare, finance, government, and enterprise platforms — including a live, public automation suite with CI.</p>
+
+  <div class="projects-grid">
+
+    <!-- Featured -->
+    <div class="project-card featured reveal">
+      <div class="project-meta">
+        <span class="case-id">CASE-08</span>
+        <span class="pass-badge">✓ PASSED</span>
+      </div>
+      <div class="project-title">SauceDemo Playwright Automation Suite</div>
+      <div class="project-desc">Built and shipped a real end-to-end automation suite from scratch — 26 test cases across authentication, product catalog, checkout, and API layers, using the Page Object Model. Wired up GitHub Actions to run the full suite across Chromium, Firefox, and WebKit on every push and pull request, with HTML reports uploaded as build artifacts.</div>
+      <div class="project-tags">
+        <span class="ptag">Playwright</span>
+        <span class="ptag">Page Object Model</span>
+        <span class="ptag">CI/CD</span>
+        <span class="ptag">API Testing</span>
+        <span class="ptag">GitHub Actions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <a href="https://github.com/nigarkana/saucedemo-playwright" class="project-link" target="_blank">View on GitHub →</a>
+        <div class="ci-badge"><img src="https://github.com/nigarkana/saucedemo-playwright/actions/workflows/playwright.yml/badge.svg" alt="CI status" /></div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-meta"><span class="case-id">CASE-01</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">Electronic Construction Permitting System</div>
+      <div class="project-desc">Tested end-to-end workflows covering permit submission, document upload validation, approval routing, and status tracking. Verified role-based access for applicants, reviewers, and approving authorities.</div>
+      <div class="project-tags"><span class="ptag">Functional Testing</span><span class="ptag">Workflow Testing</span><span class="ptag">UAT</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-meta"><span class="case-id">CASE-02</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">Microfinance Platform</div>
+      <div class="project-desc">Validated loan origination, disbursement, repayment scheduling, and interest calculation modules. Focused on data accuracy in financial computations and edge cases around overdue and partial repayments.</div>
+      <div class="project-tags"><span class="ptag">Functional Testing</span><span class="ptag">Financial Calculations</span><span class="ptag">Regression</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-meta"><span class="case-id">CASE-03</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">Sheiboi</div>
+      <div class="project-desc">Performed functional and usability testing across core flows, identifying defects in navigation, form validation, and data persistence. Coordinated closely with developers during sprint cycles for rapid defect resolution.</div>
+      <div class="project-tags"><span class="ptag">Manual Testing</span><span class="ptag">Usability</span><span class="ptag">Agile</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-meta"><span class="case-id">CASE-04</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">DIRD Management Software</div>
+      <div class="project-desc">Conducted system and regression testing for departmental record and information management workflows, ensuring data integrity across record creation, updates, and reporting modules.</div>
+      <div class="project-tags"><span class="ptag">System Testing</span><span class="ptag">Regression</span><span class="ptag">Data Integrity</span></div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-meta"><span class="case-id">CASE-05</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">Hygia — Hospital Management System</div>
+      <div class="project-desc">Tested patient registration, appointment scheduling, billing, and EMR modules. Validated critical patient-data accuracy and access control to support safe clinical workflows.</div>
+      <div class="project-tags"><span class="ptag">Healthcare Systems</span><span class="ptag">Functional Testing</span><span class="ptag">Access Control</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-meta"><span class="case-id">CASE-06</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">Client Relationship Management (CRM)</div>
+      <div class="project-desc">Verified lead-to-customer lifecycle workflows including contact management, pipeline stages, and notification triggers. Ensured data consistency across integrated sales and reporting dashboards.</div>
+      <div class="project-tags"><span class="ptag">CRM Testing</span><span class="ptag">Integration</span><span class="ptag">Regression</span></div>
+    </div>
+
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-meta"><span class="case-id">CASE-07</span><span class="pass-badge">✓ PASSED</span></div>
+      <div class="project-title">API Testing Portfolio</div>
+      <div class="project-desc">Built a portfolio of API test cases covering request/response validation, status codes, and error handling, supporting backend reliability ahead of release.</div>
+      <div class="project-tags"><span class="ptag">API Testing</span><span class="ptag">Test Design</span></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── EDUCATION ─────────────────────────────────────────────── -->
+<section id="education">
+  <div class="eyebrow">// background</div>
+  <h2 class="section-title">Education &amp; Certifications</h2>
+  <p class="section-sub">Graduate study in computer science and project management, backed by recognised QA and DevOps certifications.</p>
+
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-card-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-year">2024</div>
+        <div class="edu-degree">MSc in Applied Computer Science</div>
+        <div class="edu-school">Fairleigh Dickinson University, Vancouver, Canada</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2023</div>
+        <div class="edu-degree">MSc in Project Management</div>
+        <div class="edu-school">University of the West of Scotland</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">—</div>
+        <div class="edu-degree">BSc in Computer Science</div>
+        <div class="edu-school">Bachelor's degree in Computer Science</div>
+      </div>
+    </div>
+
+    <div class="edu-card reveal reveal-delay-1">
+      <div class="edu-card-title">Certifications</div>
+      <div class="cert-item">
+        <div class="cert-badge istqb">ISTQB</div>
+        <div>
+          <div class="cert-name">ISTQB Certified Tester</div>
+          <div class="cert-org">International Software Testing Qualifications Board</div>
         </div>
-
-        <div class="edu-col">
-          <h3 class="coltitle">Certifications</h3>
-          <div class="edu-item">
-            <div class="yr">ISTQB</div>
-            <div class="deg">ISTQB Certified Tester</div>
-            <div class="org">International Software Testing Qualifications Board</div>
-          </div>
-          <div class="edu-item">
-            <div class="yr">Atlassian</div>
-            <div class="deg">Agile Project Management Professional</div>
-            <div class="org">Atlassian — Agile project management practices</div>
-          </div>
-          <div class="edu-item">
-            <div class="yr">Azure</div>
-            <div class="deg">Azure DevOps for Beginners</div>
-            <div class="org">Foundational Azure DevOps tooling and workflows</div>
-          </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge atl">ATL</div>
+        <div>
+          <div class="cert-name">Agile Project Management Professional</div>
+          <div class="cert-org">Atlassian</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge azure">AZ</div>
+        <div>
+          <div class="cert-name">Azure DevOps for Beginners</div>
+          <div class="cert-org">Microsoft Azure</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ACTIVITY -->
-  <section id="activity" aria-label="Recent activity">
-    <div class="wrap">
-      <span class="eyebrow">// currently</span>
-      <h2>Recent activity</h2>
-      <p class="section-sub">What I'm learning and building right now.</p>
+<div class="section-divider"></div>
 
-      <div class="activity">
-        <h3>Generative AI in software testing</h3>
-        <p>Building hands-on expertise in applying generative AI to software quality assurance — including AI-generated test case design, synthetic test data creation, and AI-assisted defect analysis — to bring next-generation efficiency to QA processes.</p>
-      </div>
+<!-- ── ACTIVITY ──────────────────────────────────────────────── -->
+<section id="activity">
+  <div class="eyebrow">// currently</div>
+  <h2 class="section-title">Recent Activity</h2>
+  <p class="section-sub" style="margin-bottom:32px">What I'm learning and building right now.</p>
+  <div class="activity-card reveal">
+    <div class="activity-title">Generative AI in Software Testing</div>
+    <div class="activity-body">Building hands-on expertise in applying generative AI to software quality assurance — including AI-generated test case design, synthetic test data creation, and AI-assisted defect analysis — to bring next-generation efficiency to QA processes.</div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── CONTACT ───────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="eyebrow" style="justify-content:center">// get in touch</div>
+    <div class="contact-headline">Let's Work Together</div>
+    <p class="contact-sub">Open to QA Analyst and Software Tester roles in Canada.<br>Reach out directly or connect on LinkedIn.</p>
+    <div class="contact-links">
+      <a href="mailto:nigarkana@gmail.com" class="btn-primary">✉ Email Me</a>
+      <a href="https://www.linkedin.com/in/nigarkana/" target="_blank" class="btn-secondary">LinkedIn</a>
+      <a href="https://github.com/nigarkana/" target="_blank" class="btn-secondary">GitHub</a>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" aria-label="Contact">
-    <div class="wrap">
-      <span class="eyebrow">// get in touch</span>
-      <h2>Let's work together</h2>
-      <p>Open to QA Analyst and Software Tester roles. Reach out directly or connect on LinkedIn.</p>
-      <div class="contact-row">
-        <a href="mailto:nigarkana@gmail.com" class="btn btn-primary">Email me</a>
-        <a href="https://www.linkedin.com/in/nigarkana/" class="btn btn-ghost" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/nigarkana/" class="btn btn-ghost" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
-<footer>
-  <div class="wrap"><p>// built and maintained by Nigar Kana — 2026</p></div>
-</footer>
+<footer>// built and maintained by Nigar Kana — 2026</footer>
 
 <script>
-  // Mobile nav toggle
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.getElementById('navlinks');
-  toggle.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
+// Scroll reveal
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Subtle 3D card tilt on mouse move
+document.querySelectorAll('.skill-card, .project-card, .stat-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    const rx = dy * -5;
+    const ry = dx * 5;
+    card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    card.style.transition = 'box-shadow 0.1s';
   });
-  links.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', false);
-    })
-  );
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+  });
+});
 </script>
 </body>
 </html>
