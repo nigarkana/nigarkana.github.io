@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NK · Software Quality Engineer | nigarkana.github.io</title>
-  <meta name="description" content="Nigar Kana works in Software Quality Engineering with 7+ years across government, telecom, and enterprise. ISTQB certified. Playwright automation, API testing, AI-assisted QA. Open to roles in Canada." />
+  <meta name="description" content="Nigar Kana works in Software Quality Engineering with over a decade of experience across government, telecom, and enterprise. ISTQB certified. Playwright automation, API testing, AI-assisted QA. Open to roles in Canada." />
   <meta property="og:title" content="Nigar Kana — Software Quality Engineer" />
   <meta property="og:description" content="Software Quality Engineer · ISTQB Certified · Playwright & CI/CD · Vancouver, Canada · Open to opportunities." />
   <meta property="og:type" content="profile" />
@@ -566,6 +566,28 @@
       line-height: 1.65;
       max-width: 640px;
     }
+    .exp-bullets {
+      max-width: 640px;
+      margin: 4px 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .exp-bullets li {
+      font-size: .91rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .exp-bullets li:last-child { margin-bottom: 0; }
     .exp-tags {
       display: flex;
       flex-wrap: wrap;
@@ -1163,7 +1185,7 @@
       </h1>
 
       <p class="hero-tagline">
-        7 years across government, telecom, and enterprise — manual testing, Playwright automation, API validation, and AI-assisted quality engineering. ISTQB Certified.
+        Over a decade across government, telecom, and enterprise — manual testing, Playwright automation, API validation, and AI-assisted quality engineering. ISTQB Certified.
       </p>
 
       <p class="hero-bio">
@@ -1197,7 +1219,7 @@
 <div class="stats-row">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-number">7+</div>
+      <div class="stat-number">10+</div>
       <div class="stat-label">Years of Experience</div>
       <div class="stat-sub">Govt · Telecom · Enterprise</div>
     </div>
@@ -1230,7 +1252,7 @@
       <div class="why-point">
         <div class="why-num">01</div>
         <div class="why-text">
-          <strong>7 years of real-world coverage depth</strong>
+          <strong>Over a decade of real-world coverage depth</strong>
           <p>I've tested across government systems, healthcare EMRs, fintech platforms, and enterprise CRMs — each domain with its own failure modes, compliance requirements, and stakeholder expectations. I know how to ask the right questions before a single test case is written.</p>
         </div>
       </div>
@@ -1315,76 +1337,118 @@
   <div class="section-inner">
     <div class="section-eyebrow">// work history</div>
     <h2 class="section-title">Professional Experience</h2>
-    <p class="section-desc">Seven years of QA delivery across government, healthcare, fintech, and enterprise domains.</p>
+    <p class="section-desc">Over a decade of QA delivery spanning government, telecom, enterprise, and microfinance platforms across Bangladesh and Canada.</p>
 
     <div class="exp-timeline">
 
       <div class="exp-item">
         <div class="exp-date">
-          <div class="exp-year">2022 — Present</div>
+          <div class="exp-year">Mar 2020 — Dec 2023</div>
         </div>
         <div class="exp-dot accent"></div>
         <div class="exp-content">
-          <div class="exp-role">Software Quality Engineer</div>
-          <div class="exp-company">Freelance / Contract — Vancouver, Canada</div>
-          <div class="exp-desc">
-            Delivered end-to-end QA across eight client engagements spanning government permitting systems, healthcare EMRs, fintech platforms, and enterprise CRMs. Built a publicly verifiable Playwright automation suite covering 26 test cases across three browsers with CI on every commit. Maintained a 95%+ regression pass rate across sprint releases and achieved zero post-launch critical defects on two consecutive government projects.
-          </div>
+          <div class="exp-role">IT Consultant – Software Quality Engineer <span style="font-weight:400; color:var(--text-muted);">(Urban Resilience Project)</span></div>
+          <div class="exp-company">RTI International · Dhaka, Bangladesh</div>
+          <ul class="exp-bullets">
+            <li>Reviewed requirements and defined acceptance criteria with business analysts and government stakeholders, applying shift-left practices to catch risks before development began on the Electronic Construction Permit System.</li>
+            <li>Designed and executed functional, integration, regression, and UAT test cases across permit processing, document management, approval workflows, payment integration, and reporting modules.</li>
+            <li>Ran smoke tests on each new build to confirm core permit-issuance workflows before committing to full regression cycles.</li>
+            <li>Validated contract-level integrations between government registries, payment gateways, and internal systems, catching interface and data-integrity issues before deployment.</li>
+            <li>Managed the complete defect lifecycle in Jira and produced test summary and release validation reports for cross-functional stakeholders.</li>
+            <li>Helped define release strategy, including go/no-go criteria and rollout sequencing, to minimize downtime for citizen-facing services.</li>
+            <li>Applied shift-right practices by monitoring post-release issues and feeding production feedback into regression planning.</li>
+            <li>Delivered end-user training across 25+ stakeholder sessions to drive system adoption.</li>
+          </ul>
           <div class="exp-tags">
-            <span class="etag">Playwright</span>
-            <span class="etag">API Testing</span>
-            <span class="etag">JIRA</span>
+            <span class="etag">Shift-Left / Shift-Right</span>
+            <span class="etag">UAT</span>
+            <span class="etag">Contract Testing</span>
+            <span class="etag">Jira</span>
+            <span class="etag">Release Strategy</span>
+            <span class="etag">Government</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">
+          <div class="exp-year">Sep 2018 — Feb 2020</div>
+        </div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-role">Senior Software QA Engineer <span style="font-weight:400; color:var(--text-muted);">(Grameenphone Project)</span></div>
+          <div class="exp-company">Wipro Ltd. · Dhaka, Bangladesh</div>
+          <ul class="exp-bullets">
+            <li>Joined sprint planning, requirement walkthroughs, and backlog discussions to embed shift-left quality practices into telecom application development.</li>
+            <li>Executed smoke and functional testing on 20+ telecom applications supporting customer onboarding, billing, roaming, and service activation.</li>
+            <li>Performed integration and contract testing with Ericsson, Nokia, and Huawei platforms to verify reliable data exchange across the network stack.</li>
+            <li>Managed defects in Jira with Agile teams and validated backend data via SQL to support release readiness.</li>
+            <li>Contributed to release strategy by defining phased rollout and rollback criteria for production releases.</li>
+            <li>Applied shift-right testing by reviewing live network incidents and production feedback to refine regression scope.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="etag">Telecom</span>
+            <span class="etag">Integration Testing</span>
+            <span class="etag">SQL</span>
+            <span class="etag">Jira</span>
             <span class="etag">Agile</span>
-            <span class="etag">GitHub Actions</span>
           </div>
         </div>
       </div>
 
       <div class="exp-item">
         <div class="exp-date">
-          <div class="exp-year">2020 — 2022</div>
+          <div class="exp-year">Nov 2014 — Aug 2018</div>
         </div>
         <div class="exp-dot"></div>
         <div class="exp-content">
-          <div class="exp-role">Project Coordinator</div>
-          <!-- ★ UPDATE: Replace with your actual employer name below -->
-          <div class="exp-company">RTI International · [Location]</div>
-          <div class="exp-desc">
-            Coordinated cross-functional project delivery, managed stakeholder communication, and supported quality assurance processes across multiple concurrent projects. Developed structured test documentation and liaised between technical and business teams to ensure delivery against scope.
-          </div>
+          <div class="exp-role">Software QA Engineer (Lead)</div>
+          <div class="exp-company">Raven Systems Ltd. · Dhaka, Bangladesh</div>
+          <ul class="exp-bullets">
+            <li>Led a team of six QA engineers testing HRM, Payroll, Asset Management, and Document Management systems serving 30,000+ daily users across enterprise and government clients.</li>
+            <li>Reviewed requirements and design specs with developers early (shift-left), planning test activities and mentoring the team to keep coverage consistent across concurrent projects.</li>
+            <li>Established smoke test suites run after every build to confirm platform stability before full regression cycles.</li>
+            <li>Verified integration contracts across HRM, payroll, and asset modules to ensure consistent data flow platform-wide.</li>
+            <li>Designed and executed manual and mobile test cases for Android and iOS applications, achieving 99.9% error-free performance after release.</li>
+            <li>Coordinated defect triage and set release readiness criteria as part of the team's release strategy, supporting on-time delivery across multiple concurrent projects.</li>
+            <li>Applied shift-right practices by analyzing post-release incidents to continuously refine test coverage and team processes.</li>
+          </ul>
           <div class="exp-tags">
-            <span class="etag">Project Management</span>
-            <span class="etag">Stakeholder Management</span>
-            <span class="etag">Documentation</span>
+            <span class="etag">Team Leadership</span>
+            <span class="etag">Mobile Testing</span>
+            <span class="etag">Enterprise Systems</span>
+            <span class="etag">Release Strategy</span>
           </div>
         </div>
       </div>
 
       <div class="exp-item">
         <div class="exp-date">
-          <div class="exp-year">2018 — 2020</div>
+          <div class="exp-year">Feb 2010 — May 2013</div>
         </div>
         <div class="exp-dot"></div>
         <div class="exp-content">
-          <div class="exp-role">Customer Experience Associate</div>
-          <!-- ★ UPDATE: Replace with your actual employer name/title below -->
-          <div class="exp-company">YVR (Vancouver International Airport) · Vancouver, Canada</div>
-          <div class="exp-desc">
-            Delivered high-volume, detail-oriented customer service in a fast-paced airport environment. Developed strong communication skills, attention to process compliance, and the ability to manage multiple priorities under pressure — all transferable to structured QA workflows.
-          </div>
+          <div class="exp-role">Software Test Engineer <span style="font-weight:400; color:var(--text-muted);">(Team Lead, Microfinance Project)</span></div>
+          <div class="exp-company">BRAC IT Services Ltd. · Dhaka, Bangladesh</div>
+          <ul class="exp-bullets">
+            <li>Led QA for a multi-country microfinance platform serving 1M+ users, developing test plans, test cases, and UAT scenarios for loan management, repayments, transaction processing, and reporting.</li>
+            <li>Joined early requirement analysis workshops with stakeholders across countries (shift-left) to surface risks before development began.</li>
+            <li>Executed functional, integration, and regression testing to validate data accuracy, business rules, and reliable transactions across multiple country deployments.</li>
+            <li>Ran smoke tests after each deployment to confirm baseline stability across country-specific configurations before full regression.</li>
+            <li>Verified integration contracts between core banking and branch-level modules to maintain data consistency across countries.</li>
+            <li>Defined release strategy elements, including rollout sequencing and compliance checkpoints, tailored to each country's regulatory requirements.</li>
+            <li>Applied shift-right testing by tracking production usage and incident trends post-go-live to inform ongoing test planning.</li>
+          </ul>
           <div class="exp-tags">
-            <span class="etag">Customer Service</span>
-            <span class="etag">Process Compliance</span>
-            <span class="etag">Communication</span>
+            <span class="etag">Microfinance</span>
+            <span class="etag">UAT</span>
+            <span class="etag">Multi-Country Deployment</span>
+            <span class="etag">Release Strategy</span>
           </div>
         </div>
       </div>
 
     </div>
-
-    <p style="margin-top:24px; font-family:'JetBrains Mono',monospace; font-size:.74rem; color:var(--text-muted);">
-      ★ Note: Update the employer names, dates, and descriptions above with your verified details before publishing.
-    </p>
   </div>
 </section>
 
@@ -1654,7 +1718,7 @@
       <a href="blog/from-qa-to-quality-engineer.html" class="blog-card">
         <div class="blog-eyebrow">Perspective</div>
         <h3 class="blog-title">From QA Analyst to Software Quality Engineer: How the Role Has Changed</h3>
-        <p class="blog-desc">Seven years ago my job was to find bugs before customers did. Today the bugs are the smallest part of it. What actually changed, told through real projects.</p>
+        <p class="blog-desc">A decade ago my job was to find bugs before customers did. Today the bugs are the smallest part of it. What actually changed, told through real projects.</p>
         <div class="blog-meta">9 min read</div>
         <span class="blog-read">Read article →</span>
       </a>
@@ -1681,7 +1745,7 @@
       </a>
       <a href="blog/lessons-from-seven-years-in-qa.html" class="blog-card">
         <div class="blog-eyebrow">Reflection</div>
-        <h3 class="blog-title">Lessons Learned from Seven Years in Software Quality</h3>
+        <h3 class="blog-title">Lessons Learned from Over a Decade in Software Quality</h3>
         <p class="blog-desc">Not a list of tools. The engineering judgment that only came from getting it wrong first — flaky tests, trust, and measuring quality properly.</p>
         <div class="blog-meta">10 min read</div>
         <span class="blog-read">Read article →</span>
