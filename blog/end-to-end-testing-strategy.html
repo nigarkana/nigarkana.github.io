@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End-to-End Testing Strategy for Modern Web Applications | Nigar Kana</title>
+  <meta name="description" content="Most portfolios talk about tools. This is about strategy — how unit testing, API testing, UI automation, contract testing, accessibility, performance, security, and production monitoring fit together instead of competing." />
+  <meta property="og:title" content="End-to-End Testing Strategy for Modern Web Applications" />
+  <meta property="og:description" content="How I'd test a web application from requirements through production — and why testing types are complementary, not competing." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nigarkana.github.io/blog/end-to-end-testing-strategy.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://nigarkana.github.io/blog/end-to-end-testing-strategy.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI3IiBmaWxsPSIjMUUzQTVGIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE1IiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0Y1RjdGQSI+Tks8L3RleHQ+PC9zdmc+" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/blog.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">NSK.qa</a>
+    <a href="../index.html#blog" class="nav-back">← Back to portfolio</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-eyebrow">// strategy</div>
+  <h1 class="article-title">End-to-End Testing Strategy for Modern Web Applications</h1>
+  <p class="article-dek">
+    Most portfolios talk about which tools someone knows. Almost none talk about how the different kinds of testing actually fit together across a project's lifecycle. This is that strategy, laid out from requirements to production.
+  </p>
+  <div class="article-meta">
+    <span>Nigar Kana</span>
+    <span class="dot">·</span>
+    <span>10 min read</span>
+    <span class="dot">·</span>
+    <span>Test Strategy</span>
+  </div>
+  <div class="article-tags">
+    <span class="atag">Test Strategy</span>
+    <span class="atag">API Testing</span>
+    <span class="atag">Accessibility</span>
+    <span class="atag">Performance</span>
+    <span class="atag">Monitoring</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>
+    Ask someone what testing tools they know and you'll get a list: Playwright, Postman, JMeter, maybe Cypress. Ask them how those tools fit together into a coherent strategy for a real application, and the answers get thin fast. Tools are interchangeable. Strategy — knowing what each kind of testing is actually for, and where its responsibility ends and the next one's begins — is what determines whether a release ships with confidence or with crossed fingers. Here's how I think about it, layer by layer, from a requirement being written to that feature running in production.
+  </p>
+
+  <div class="diagram-block">Requirements → Unit → API → UI Automation → Contract → Exploratory
+                                                                    │
+Accessibility ─┐                                                   │
+Performance   ─┼──────────────► Release Gate ◄─────────────────────┘
+Security      ─┘                     │
+                                      ▼
+                          Production Monitoring
+                          (feeds back into requirements)</div>
+
+  <h2>Unit testing: not my job to write, but my job to trust</h2>
+
+  <p>
+    Unit tests belong to developers, and I say that deliberately rather than territorially — the person writing a function is best positioned to test its internal logic, edge cases, and error handling at the level of a single method. My responsibility at this layer isn't writing unit tests, it's knowing whether they're trustworthy: is coverage concentrated on trivial getters while the actual business logic — the interest calculation on a microfinance platform, the permission check on a document management system — is thinly tested or untested? A QA strategy that ignores unit-level coverage and tries to catch everything at the UI layer is expensive and slow. A QA strategy that assumes unit tests caught everything and skips deeper verification is naive. The right posture is asking developers pointed questions about what's covered, not writing the tests myself.
+  </p>
+
+  <h2>API testing: where the real logic actually lives</h2>
+
+  <p>
+    UI tests are slow, brittle, and only exercise a fraction of what a system actually does. Most of the meaningful logic — validation rules, authorization, data transformation, error responses — lives at the API layer, and it's testable there far faster and more precisely than through a browser. My API test suites cover request and response schema validation, HTTP status code correctness (not just "200 on success" but the right 4xx for the right failure mode), authentication and authorization flows, and negative testing — malformed payloads, missing required fields, boundary values. On a REST suite I built covering three backend services, the API layer caught schema and auth-flow defects that would have been far more expensive to diagnose if they'd first surfaced as a confusing UI symptom three layers removed from the actual cause.
+  </p>
+
+  <h2>UI automation: proving the layers connect, not re-testing the logic</h2>
+
+  <p>
+    This is the layer most portfolios treat as the whole job, and it's actually the narrowest-scoped one done well. UI automation isn't there to re-verify business logic already covered at the unit and API level — it's there to prove that the layers are wired together correctly from a real user's perspective: that submitting a form actually calls the right endpoint, that a validation error from the API actually renders as a visible message, that a role without permission actually can't see a restricted action. Keeping UI automation scoped to user journeys — login, checkout, permit submission — rather than re-litigating every business rule already covered elsewhere is what keeps a Playwright suite fast and maintainable instead of a slow, flaky mirror of the unit suite.
+  </p>
+
+  <h2>Contract testing: catching integration breaks before they reach a shared environment</h2>
+
+  <p>
+    On systems with multiple integrated services — the four-system CRM environment I tested is a good example — the failure mode that traditional UI or API tests miss is drift: the frontend expects a field the backend stopped sending, or a downstream service assumes a shape the API contract no longer guarantees. Contract testing verifies that producer and consumer agree on a schema independently of a full integration environment being up, which matters most exactly when a real integrated environment is expensive or slow to stand up. It's the layer that catches "these two teams both changed their side and nobody noticed until staging" before staging.
+  </p>
+
+  <h2>Exploratory testing: the layer with no script</h2>
+
+  <p>
+    Every layer above this one tests what someone thought to specify in advance. Exploratory testing is where I actively try to break the system based on intuition about where it's likely to be soft — rapid double-submits, browser back-button navigation mid-workflow, session timeout during a multi-step form. On an EdTech platform I tested across four sprint cycles, a meaningful share of the defects found came from exploratory sessions, not the scripted regression suite — because scripted tests only catch what someone already thought to write down, and the interesting bugs live in the gaps nobody thought to specify.
+  </p>
+
+  <h2>Accessibility: tested, not assumed</h2>
+
+  <p>
+    Accessibility gets treated as a checkbox — "we ran an automated scanner" — when automated scanners catch maybe a third of real accessibility issues: missing alt text and contrast ratios, yes; a focus trap that makes a modal impossible to close with a keyboard, no. My baseline is automated scanning (axe-core class tooling) integrated into the pipeline as a gate for the mechanical issues, plus manual keyboard-only and screen-reader passes on core flows — the modal, the multi-step form, the navigation — because that's where automated tools reliably miss real, user-blocking problems.
+  </p>
+
+  <h2>Performance: a testing responsibility, not just an ops one</h2>
+
+  <p>
+    Performance testing often gets scoped out of a QA strategy entirely and handed to infrastructure teams, which misses the point — a QA engineer knows which user flows matter most and what "acceptable" looks like from a user's perspective, which is exactly the input a load test needs to be meaningful. My approach: define performance budgets on the flows that matter (checkout, search, document upload) early, in requirements, not as an afterthought bolted onto a release checklist, and treat a performance regression with the same seriousness as a functional one — because a checkout that times out under load is a shipped defect, not an infrastructure footnote.
+  </p>
+
+  <h2>Security awareness: a QA responsibility even without a dedicated pentest</h2>
+
+  <p>
+    I'm not a security engineer, and pretending otherwise would be dishonest. But security awareness — testing for the OWASP-class issues within reach of functional testing: input validation gaps that enable injection, authorization checks that can be bypassed by changing a URL parameter, sensitive data appearing in a response that shouldn't include it — is squarely within a quality engineer's scope. On the government and healthcare systems I've tested, verifying role-based access control wasn't just a functional requirement, it was the security control, and testing it thoroughly was quality work and security work at the same time.
+  </p>
+
+  <h2>Production monitoring: the strategy doesn't end at deploy</h2>
+
+  <p>
+    Every layer above this happens before release. None of it tells you what real users, real data volumes, and real network conditions actually do to the system. Production monitoring — error rate dashboards, real-user performance metrics, alerting on anomalies — is the feedback loop that closes the strategy: it's how you find out that the edge case nobody wrote a test for is happening to 2% of real users right now. Treating this as someone else's problem — "that's DevOps" — is how teams stay confident right up until they're not. The monitoring signal should feed back into the next cycle's requirements and test design, which is what makes this a loop and not a line.
+  </p>
+
+  <blockquote>
+    None of these layers substitutes for another. A team with excellent UI automation and no API tests is testing the same logic slowly and expensively. A team with great unit coverage and no exploratory testing has high confidence in the paths they thought of and zero visibility into the ones they didn't. Strategy is knowing which layer catches which class of failure, and making sure nothing falls in a gap between them.
+  </blockquote>
+
+</article>
+
+<div class="article-author">
+  <div class="author-card">
+    <div class="author-avatar">NK</div>
+    <div>
+      <div class="author-name">Nigar Kana</div>
+      <div class="author-role">Software Quality Engineer · ISTQB Certified · Vancouver, Canada</div>
+    </div>
+    <div class="author-links">
+      <a href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nigarkana/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <h3>More from the blog</h3>
+  <a href="from-qa-to-quality-engineer.html" class="more-link">
+    <div class="more-link-title">From QA Analyst to Software Quality Engineer: How the Role Has Changed</div>
+    <div class="more-link-desc">Seven years in QA taught me that the job stopped being "find the bugs" a while ago.</div>
+  </a>
+  <a href="ai-assisted-quality-engineering.html" class="more-link">
+    <div class="more-link-title">AI-Assisted Quality Engineering: What Actually Works</div>
+    <div class="more-link-desc">Real experiments with ChatGPT, Claude, Copilot, Cursor, and Gemini — and where they still fail.</div>
+  </a>
+</div>
+
+<footer>
+  // built and maintained by Nigar Kana · Software Quality Engineer · Vancouver · 2026
+</footer>
+
+</body>
+</html>

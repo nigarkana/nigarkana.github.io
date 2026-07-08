@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lessons Learned from Seven Years in Software Quality | Nigar Kana</title>
+  <meta name="description" content="Not a list of technologies. Engineering lessons from seven years in QA — the bugs automation never catches, the cost of flaky tests, and how to earn a developer's trust." />
+  <meta property="og:title" content="Lessons Learned from Seven Years in Software Quality" />
+  <meta property="og:description" content="Engineering lessons from seven years in QA across government, healthcare, and fintech — not a list of tools, a list of things that actually took years to learn." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nigarkana.github.io/blog/lessons-from-seven-years-in-qa.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://nigarkana.github.io/blog/lessons-from-seven-years-in-qa.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI3IiBmaWxsPSIjMUUzQTVGIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE1IiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0Y1RjdGQSI+Tks8L3RleHQ+PC9zdmc+" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/blog.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">NSK.qa</a>
+    <a href="../index.html#blog" class="nav-back">← Back to portfolio</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-eyebrow">// reflection</div>
+  <h1 class="article-title">Lessons Learned from Seven Years in Software Quality</h1>
+  <p class="article-dek">
+    Not a list of tools I've used. A list of things I only learned by getting them wrong first — across government systems, hospital platforms, fintech, and enterprise CRMs.
+  </p>
+  <div class="article-meta">
+    <span>Nigar Kana</span>
+    <span class="dot">·</span>
+    <span>10 min read</span>
+    <span class="dot">·</span>
+    <span>Reflection · Career</span>
+  </div>
+  <div class="article-tags">
+    <span class="atag">Lessons Learned</span>
+    <span class="atag">Exploratory Testing</span>
+    <span class="atag">Automation</span>
+    <span class="atag">Team Trust</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>
+    Seven years is long enough to stop learning tools by trial and error and start learning judgment the same way — by getting it wrong, noticing the pattern, and adjusting. This isn't a list of technologies. It's the handful of things that took actual project scars to learn, the kind no course teaches directly.
+  </p>
+
+  <h2>Automation doesn't catch the bugs you didn't think to write a test for</h2>
+
+  <p>
+    This sounds obvious stated plainly, and it's still the lesson I see automation-heavy teams forget in practice. A regression suite is a fixed set of assertions about a system's expected behavior — it is, by definition, blind to anything outside that set. On an EdTech platform I tested, a meaningful share of real defects came from exploratory sessions, not the scripted suite, because the scripted suite could only ever verify what someone had already anticipated. The mistake is treating a green pipeline as "no bugs" instead of "no bugs in the specific set of things we thought to check." Those are very different claims, and conflating them is how confident teams get surprised.
+  </p>
+
+  <h2>Exploratory testing isn't a lesser skill — it's the harder one</h2>
+
+  <p>
+    Early on, exploratory testing felt like the unglamorous cousin of "real" automation work. That was backwards. Writing a script to verify a known behavior is mechanical once you know what to check. Deciding what to check when nobody told you — noticing that a form probably breaks if you paste in a value ten times longer than the label suggests, or that a rejection workflow probably has an edge case around already-approved records — takes actual system understanding that no script writes itself. The best exploratory sessions I've run came from asking "what would a confused, careless, or malicious user actually do here" rather than "what does the spec say should happen."
+  </p>
+
+  <h2>A flaky test costs more than the time it takes to fix it</h2>
+
+  <p>
+    The direct cost of a flaky test is small — rerun it, maybe fix a wait condition. The real cost is what it does to trust. The first time someone reruns a failing build and it goes green, they've learned "red doesn't necessarily mean broken." The tenth time, they stop reading failures carefully at all, and a genuinely broken build gets waved through because everyone's calibrated to ignore red. I treat flaky tests as a priority defect in the automation itself, not a nuisance to tolerate — because a suite people have learned to distrust is providing negative value: it costs maintenance time and gives back false confidence.
+  </p>
+
+  <h2>Maintainable automation is a design decision, not a cleanup task</h2>
+
+  <p>
+    Every brittle test suite I've inherited had the same root cause: locators and assertions tangled together with no separation of concerns, so a single UI change meant hunting through a dozen files. Maintainability isn't something you retrofit once a suite gets big enough to hurt — it's a decision made in the first file, in the Page Object Model structure, in how test data is scoped. The cost of getting this right early is small. The cost of fixing it after eighteen months of accumulated tests is a rewrite most teams never actually get budget to do, so they just live with the pain instead.
+  </p>
+
+  <h2>Automation and manual testing aren't in competition</h2>
+
+  <p>
+    I've worked on teams that treated "more automation" as an unqualified good, chasing coverage percentage as the metric that mattered. It isn't. Automation is the right tool for verifying known behavior stays known — regression, repeatability, speed. It's the wrong tool for judgment calls: does this feel right, is this confusing, would a real user get stuck here. The projects with the best quality outcomes I've worked on used automation to free up time for exploratory and usability work, not to eliminate it. The goal was never "automate everything." It was "automate the repeatable parts so there's time left for the parts that need a person."
+  </p>
+
+  <h2>The most common regression suite mistake: testing the UI what the API already proved</h2>
+
+  <p>
+    I've seen — and early in my career, written — regression suites where the same business rule gets verified three separate times: once at the API layer, once by clicking through the UI, once again in a slightly different UI flow that happens to touch the same logic. That's not extra confidence, it's tripled maintenance cost for the same signal. The fix is scoping each layer to what only that layer can prove — UI automation for user journeys and integration, API tests for logic and validation — instead of treating "more assertions everywhere" as inherently safer.
+  </p>
+
+  <h2>Earning a developer's trust takes specificity, not defect counts</h2>
+
+  <p>
+    A bug report that says "checkout is broken" gets deprioritized. A bug report that says "checkout fails when the cart contains a product with a quantity discount and the user applies a coupon code — here's the exact repro, the expected total, and the actual total" gets fixed the same day. The fastest way I've found to earn a developer's trust isn't finding more bugs, it's finding fewer, better-documented ones — reports precise enough that they don't have to spend twenty minutes reproducing what I already reproduced. Trust compounds: once a developer learns your reports are always accurate and complete, they stop second-guessing them, and that changes how fast things get fixed.
+  </p>
+
+  <h2>Measure quality, not bug counts</h2>
+
+  <p>
+    A high defect count can mean a bad build, or it can mean careful, thorough testing on a system with real complexity. A low defect count can mean a clean release, or it can mean testing that never went deep enough to find anything. Raw counts don't distinguish between those. What I've learned to actually track and report on: escaped-defect rate (what got past testing into production, the real measure of whether the process worked), time-to-detect on the defects that do get through, and whether the same class of bug keeps recurring across releases — which signals a systemic gap, not bad luck. None of those numbers are as easy to put in a slide as "we found 47 bugs this sprint," but they're the ones that actually tell you whether quality is improving or just busywork is increasing.
+  </p>
+
+  <blockquote>
+    None of these lessons came from a course or a certification, mine included. They came from shipping things, watching what broke, and being wrong enough times to notice the pattern. That's probably true of most of what actually matters in this job — the tools change every few years, but the judgment about what to test, how deeply, and who to trust with the answer, that part just accumulates.
+  </blockquote>
+
+</article>
+
+<div class="article-author">
+  <div class="author-card">
+    <div class="author-avatar">NK</div>
+    <div>
+      <div class="author-name">Nigar Kana</div>
+      <div class="author-role">Software Quality Engineer · ISTQB Certified · Vancouver, Canada</div>
+    </div>
+    <div class="author-links">
+      <a href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nigarkana/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <h3>More from the blog</h3>
+  <a href="end-to-end-testing-strategy.html" class="more-link">
+    <div class="more-link-title">End-to-End Testing Strategy for Modern Web Applications</div>
+    <div class="more-link-desc">How the different kinds of testing fit together from requirements through production.</div>
+  </a>
+  <a href="from-qa-to-quality-engineer.html" class="more-link">
+    <div class="more-link-title">From QA Analyst to Software Quality Engineer: How the Role Has Changed</div>
+    <div class="more-link-desc">Seven years in QA taught me that the job stopped being "find the bugs" a while ago.</div>
+  </a>
+</div>
+
+<footer>
+  // built and maintained by Nigar Kana · Software Quality Engineer · Vancouver · 2026
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a Production-Ready Playwright Framework with GitHub Actions | Nigar Kana</title>
+  <meta name="description" content="Most Playwright tutorials show you how to write one test. Here's how I structured a framework — POM, CI, retries, reporting — designed to survive a real project instead of a demo." />
+  <meta property="og:title" content="Building a Production-Ready Playwright Framework with GitHub Actions" />
+  <meta property="og:description" content="The architecture decisions behind a Playwright suite that survives a real project, not a demo — folder structure, POM, CI config, retries, and reporting." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nigarkana.github.io/blog/production-ready-playwright-framework.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://nigarkana.github.io/blog/production-ready-playwright-framework.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI3IiBmaWxsPSIjMUUzQTVGIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE1IiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0Y1RjdGQSI+Tks8L3RleHQ+PC9zdmc+" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/blog.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">NSK.qa</a>
+    <a href="../index.html#blog" class="nav-back">← Back to portfolio</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-eyebrow">// framework design</div>
+  <h1 class="article-title">Building a Production-Ready Playwright Framework with GitHub Actions</h1>
+  <p class="article-dek">
+    Plenty of tutorials show you how to write a Playwright test. Almost none show you how to structure a suite that a real team can maintain, trust, and extend six months later. Here's how I built mine, and why each decision is there.
+  </p>
+  <div class="article-meta">
+    <span>Nigar Kana</span>
+    <span class="dot">·</span>
+    <span>10 min read</span>
+    <span class="dot">·</span>
+    <span>Playwright · CI/CD</span>
+  </div>
+  <div class="article-tags">
+    <span class="atag">Playwright</span>
+    <span class="atag">Page Object Model</span>
+    <span class="atag">GitHub Actions</span>
+    <span class="atag">Test Architecture</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>
+    A test file that clicks a button and asserts some text is trivial to write. The hard part — the part that separates a demo repo from something a team can actually rely on — is everything around that one test: how it's organized, how it handles change, how it fails loudly instead of quietly, and how it earns enough trust that people stop ignoring it when it goes red. That's what I optimized for when building the automation suite behind my portfolio, a Playwright + JavaScript project structured around the Page Object Model and wired into GitHub Actions on every push.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">The project</div>
+    Public repo: <a href="https://github.com/nigarkana/ae-playwright" target="_blank" rel="noopener">github.com/nigarkana/ae-playwright</a> — end-to-end tests for an e-commerce site, built with Playwright and the Page Object Model, CI on every push and pull request via GitHub Actions.
+  </div>
+
+  <h2>Folder architecture: separate "what the page can do" from "what we're testing"</h2>
+
+  <p>
+    The single biggest maintainability mistake in test automation is mixing locators and assertions in the same file as the test logic. The moment a button's selector changes, you're hunting through every spec file that happens to click it. My structure keeps those concerns apart:
+  </p>
+
+  <div class="diagram-block">ae-playwright/
+├── pages/                      # Page Object Model — locators & actions only
+│   ├── AE_HomePage.js
+│   ├── AE_LoginPage.js
+│   ├── AE_ProductPage.js
+│   └── AE_CartPage.js
+├── tests/                      # Test specs — behavior & assertions only
+│   └── automationExcercise.spec.js
+├── TEST_PLAN.md                 # What's covered and why
+├── playwright.config.js         # Runner behavior, retries, timeouts
+└── .github/workflows/           # CI pipeline definition</div>
+
+  <p>
+    Each page object exposes actions and locators as methods — <code>loginPage.login(email, password)</code>, <code>cartPage.removeProduct(name)</code> — so a spec file reads like a description of user behavior, not a list of CSS selectors. When automationexercise.com renames a class or restructures a form, I fix it in one page object file. The tests don't change, because the tests never knew about the selector to begin with. That's the entire point of the Page Object Model: it converts "the site changed" from a multi-file hunt into a single, predictable edit.
+  </p>
+
+  <h2>Environment and runner configuration: decide behavior once, not per test</h2>
+
+  <p>
+    <code>playwright.config.js</code> is where the framework makes decisions so individual tests don't have to. A few choices I made deliberately, not by default:
+  </p>
+
+  <pre><code>export default defineConfig({
+  testDir: './tests',
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 1 : 0,
+  workers: process.env.CI ? 2 : undefined,
+  reporter: 'html',
+  use: {
+    trace: 'on-first-retry',
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
+  },
+});</code></pre>
+
+  <ul>
+    <li><strong>Different retry behavior locally vs. in CI.</strong> Zero retries on my machine — if a test fails locally, I want to see it fail, not have Playwright quietly paper over it. One retry in CI, because shared runners introduce timing noise a dev laptop doesn't have, and one retry is enough to absorb that noise without hiding a genuinely broken test.</li>
+    <li><strong><code>forbidOnly</code> in CI.</strong> If someone leaves a <code>test.only()</code> in a commit — which happens, usually by accident while debugging — CI fails the build instead of silently skipping the rest of the suite. That single line has saved more than one "why did we ship without running half our tests" incident on other projects I've worked on.</li>
+    <li><strong>Trace only on first retry, not every run.</strong> Full Playwright traces are expensive to generate and store. Capturing them only when a test is already misbehaving gives me the debugging artifact exactly when I need it, without bloating every green run.</li>
+    <li><strong>Explicit action and navigation timeouts.</strong> Relying on Playwright's defaults means a genuinely stuck test can hang far longer than useful. Setting them explicitly (15s for actions, 30s for navigation) means a broken test fails fast and CI doesn't sit idle burning minutes.</li>
+  </ul>
+
+  <h2>Browser scope is a tradeoff, not a default</h2>
+
+  <p>
+    The config runs Chromium in CI, with Firefox and WebKit defined but commented out, ready to enable per-project. That's a deliberate scope decision: three-browser coverage matters for a production release gate, but it also roughly triples CI runtime and flake surface for very little marginal signal on a portfolio project where the goal is demonstrating architecture, not chasing WebKit-specific rendering bugs. On a separate suite I maintain — a flagship e-commerce automation project — I do run the full three-browser matrix on every push, because that project is explicitly meant to demonstrate cross-browser coverage. The lesson: browser matrix size should be a decision you can justify, not a default you never revisited.
+  </p>
+
+  <h2>CI pipeline: fail loud, keep the evidence</h2>
+
+  <p>
+    The GitHub Actions workflow runs on every push and pull request to <code>main</code> — checkout, install Node, install Playwright's browser binaries with <code>--with-deps</code>, run the suite, then upload the HTML report as a build artifact regardless of pass or fail:
+  </p>
+
+  <pre><code>- name: Upload test report
+  uses: actions/upload-artifact@v4
+  if: always()
+  with:
+    name: playwright-report
+    path: playwright-report/
+    retention-days: 30</code></pre>
+
+  <p>
+    That <code>if: always()</code> is easy to skip and important not to. A report that only uploads on success is useless — the run you actually need the report for is the one that just failed. Anyone reviewing a red build gets the full HTML report, screenshots, and traces without having to reproduce the failure locally first. The README also carries a live CI badge, so the pipeline's current state is visible before anyone even opens the repo.
+  </p>
+
+  <h2>Test data and reporting: make failures self-explanatory</h2>
+
+  <p>
+    A test suite is only as trustworthy as its failure messages. "Test failed" tells a reviewer nothing; a screenshot of the cart showing the wrong product name, next to the assertion that expected a different one, tells them everything in five seconds. Playwright's HTML reporter, combined with trace-on-retry, means a failing build produces a report that's readable by someone who wasn't the person who wrote the test — which matters, because on a real team the person debugging a red pipeline at 4pm on a Friday is rarely the one who wrote it.
+  </p>
+
+  <h2>Flaky tests: the framework's real enemy</h2>
+
+  <p>
+    Flakiness is the fastest way to destroy trust in an automation suite — once people learn a red build "sometimes just means run it again," they stop reading failures at all, and the suite becomes noise instead of a gate. The defenses I build in from the start: explicit waits driven by Playwright's auto-waiting rather than hardcoded <code>sleep</code> calls, one controlled retry in CI (not five, which just hides real instability), and keeping test data scoped so tests don't collide with each other under parallel execution. <code>fullyParallel: true</code> only stays safe if tests don't share mutable state — that's a constraint I design the page objects and specs around, not an afterthought bolted on when parallel runs started failing intermittently.
+  </p>
+
+  <blockquote>
+    A test suite nobody trusts is worse than no test suite — it costs the same maintenance effort and gives back false confidence instead of real signal. Every one of these decisions exists to keep the suite in the "trusted" column.
+  </blockquote>
+
+  <h2>What I'd tell someone starting their first Playwright framework</h2>
+
+  <ul>
+    <li>Separate locators from assertions from day one — retrofitting the Page Object Model onto a pile of inline selectors is much more painful than starting with it.</li>
+    <li>Don't copy a browser matrix or retry count from a tutorial — decide both based on what you're actually trying to prove and what your CI budget can absorb.</li>
+    <li>Make your CI upload artifacts on failure, always. A pipeline that fails silently and gives you nothing to debug from is barely better than no pipeline.</li>
+    <li>Treat flaky tests as a defect in the framework, not the site under test — a habit worth building before the suite is large enough for flakiness to become expensive to unwind.</li>
+  </ul>
+
+  <p>
+    None of this is exotic. It's a handful of deliberate decisions, made early, about how the suite behaves when things go wrong — because things always eventually go wrong, and a framework's real value is how gracefully it tells you about it.
+  </p>
+
+</article>
+
+<div class="article-author">
+  <div class="author-card">
+    <div class="author-avatar">NK</div>
+    <div>
+      <div class="author-name">Nigar Kana</div>
+      <div class="author-role">Software Quality Engineer · ISTQB Certified · Vancouver, Canada</div>
+    </div>
+    <div class="author-links">
+      <a href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nigarkana/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <h3>More from the blog</h3>
+  <a href="from-qa-to-quality-engineer.html" class="more-link">
+    <div class="more-link-title">From QA Analyst to Software Quality Engineer: How the Role Has Changed</div>
+    <div class="more-link-desc">Seven years in QA taught me that the job stopped being "find the bugs" a while ago.</div>
+  </a>
+  <a href="ai-assisted-quality-engineering.html" class="more-link">
+    <div class="more-link-title">AI-Assisted Quality Engineering: What Actually Works</div>
+    <div class="more-link-desc">Real experiments with ChatGPT, Claude, Copilot, Cursor, and Gemini — and where they still fail.</div>
+  </a>
+</div>
+
+<footer>
+  // built and maintained by Nigar Kana · Software Quality Engineer · Vancouver · 2026
+</footer>
+
+</body>
+</html>

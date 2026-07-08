@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Assisted Quality Engineering: What Actually Works | Nigar Kana</title>
+  <meta name="description" content="Not another AI hype post. Real experiments with ChatGPT, Claude, Copilot, Cursor, and Gemini for test case generation, script writing, synthetic data, and failure triage — and where they still fail." />
+  <meta property="og:title" content="AI-Assisted Quality Engineering: What Actually Works" />
+  <meta property="og:description" content="Real experiments with ChatGPT, Claude, Copilot, Cursor, and Gemini in a QA workflow — what's genuinely useful and where they still fail." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nigarkana.github.io/blog/ai-assisted-quality-engineering.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://nigarkana.github.io/blog/ai-assisted-quality-engineering.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI3IiBmaWxsPSIjMUUzQTVGIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE1IiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0Y1RjdGQSI+Tks8L3RleHQ+PC9zdmc+" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/blog.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">NSK.qa</a>
+    <a href="../index.html#blog" class="nav-back">← Back to portfolio</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-eyebrow">// ai in practice</div>
+  <h1 class="article-title">AI-Assisted Quality Engineering: What Actually Works</h1>
+  <p class="article-dek">
+    Not another "AI will replace testers" post. This is a field report from actually using ChatGPT, Claude, Copilot, Cursor, and Gemini inside a real QA workflow — what saved time, what produced garbage, and where I still don't trust it.
+  </p>
+  <div class="article-meta">
+    <span>Nigar Kana</span>
+    <span class="dot">·</span>
+    <span>11 min read</span>
+    <span class="dot">·</span>
+    <span>AI · Quality Engineering</span>
+  </div>
+  <div class="article-tags">
+    <span class="atag">AI-Assisted Testing</span>
+    <span class="atag">LLMs</span>
+    <span class="atag">Playwright</span>
+    <span class="atag">Prompt Engineering</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>
+    Most "AI in QA" content falls into one of two camps: breathless claims that testers will be obsolete in two years, or a listicle of prompt templates nobody actually ran against a real project. I wanted to write neither. This is what happened when I ran AI tools against actual tasks from my own testing work — generating test cases, writing Playwright scripts, building synthetic data, and triaging failures — and where I hit a wall each tool couldn't get past.
+  </p>
+
+  <h2>Generating test cases from Jira-style user stories</h2>
+
+  <p>
+    Feeding a user story into an LLM and asking for test cases is the most common AI-QA demo, and it's a genuinely good starting point — with a large caveat. Given a story like "As a permitting officer, I can reject a submitted permit with a reason code," ChatGPT and Claude both reliably produce the obvious cases: happy path rejection, rejection without a reason code, rejection of an already-approved permit. What they don't produce without explicit prompting is the case that actually matters on a government system: what happens to the audit trail when a rejection is later reversed, or whether a rejected applicant can resubmit under the same permit ID. That's domain knowledge, not something inferable from the story text alone. The workflow that works: use the model to generate the first 70% of obvious coverage fast, then spend my own time on the 30% that requires knowing the system's actual risk profile — the part no story text captures.
+  </p>
+
+  <h2>Generating Playwright scripts from natural language</h2>
+
+  <p>
+    This is where the productivity gain is most real. Describing a flow in plain language — "log in, add two products to the cart, remove one, verify the remaining item's price" — and getting back a rough Playwright script saves real scaffolding time, especially with Copilot and Cursor operating directly inside the editor with access to my existing page objects. The catch: generated scripts default to brittle selectors (text matching, nth-child) unless the model can see my Page Object Model conventions already in the file. Cursor and Copilot, working with open-file context, do noticeably better here than a copy-pasted ChatGPT response with no visibility into my actual codebase — they'll reuse an existing `loginPage.login()` method instead of reinventing raw locator chains. The lesson: AI-generated test code is only as good as the context window it can see. Bare prompts in a chat window produce generic code; tools wired into your actual repo produce code that fits your architecture.
+  </p>
+
+  <h2>Producing synthetic test data</h2>
+
+  <p>
+    This is close to a solved problem and one of the highest-value uses I've found. Asking for 50 synthetic user records with realistic edge cases — names with apostrophes, addresses with unit numbers, emails with plus-addressing, phone numbers in multiple formats — takes seconds and reliably surfaces validation bugs that hand-typed test data ("John Smith", "test@test.com") never would. On a fintech-style module involving loan repayment scheduling, generating synthetic edge-case amounts (partial payments, values one cent off a rounding boundary, negative adjustments) found more genuine data-handling bugs than the manually authored test data set did. The one thing to watch: never generate synthetic data that resembles real customer PII patterns closely enough that it gets confused for real data in logs or screenshots later.
+  </p>
+
+  <h2>Explaining failing tests and root-cause analysis</h2>
+
+  <p>
+    Pasting a Playwright failure trace — the assertion, the stack, the relevant DOM snapshot — into Claude or ChatGPT and asking "why did this fail" is now a normal part of my triage process, not a novelty. It's genuinely fast at distinguishing "this is a selector that no longer matches because the DOM changed" from "this is a timing issue, add a wait condition" from "this assertion is actually correct and the application regressed." What it can't do reliably is root-cause analysis that requires knowledge outside the trace itself — it doesn't know that a specific flaky test always fails on Mondays because of a scheduled data refresh, or that a similar-looking failure happened in a different module three releases ago for an unrelated reason. AI is good at reading logs. It has no memory of your system's history unless you feed it that history explicitly, every time.
+  </p>
+
+  <h2>Defect summarization</h2>
+
+  <p>
+    This might be the single most underrated use case. Turning a wall of raw defect data — ticket IDs, severities, one-line descriptions — into a two-paragraph summary for a stakeholder who doesn't want to read 40 tickets is exactly the kind of compression work an LLM does well and a human does slowly. I use this before sprint reviews: paste the sprint's defect list, ask for a summary grouped by module and severity, with the pattern called out ("6 of 9 new defects this sprint touch the checkout flow"). It reliably surfaces patterns a flat list hides. It does not replace judgment about which defects actually matter — a model will happily summarize "9 defects found" without knowing that one of them is cosmetic and another blocks checkout entirely, unless the severity data is accurate and I ask it to weight accordingly.
+  </p>
+
+  <h2>Visual regression using AI</h2>
+
+  <p>
+    This is the least mature area of the ones I've tried, and I want to be honest about that rather than oversell it. AI-assisted visual diffing tools promise to distinguish "meaningful layout regression" from "anti-aliasing noise" automatically, and in my experimentation the signal-to-noise ratio is still rough — they flag font-rendering differences between CI runners as confidently as they flag an actually broken layout. It's a space worth watching, not a space I'd currently trust as a release gate without a human reviewing every flagged diff. Traditional pixel-diffing with a sane threshold, reviewed by a person, still outperforms what I've tested from AI-driven visual regression in terms of actual trust.
+  </p>
+
+  <h2>Where AI still fails</h2>
+
+  <ul>
+    <li><strong>Judging what actually matters.</strong> It generates coverage evenly across a spec regardless of business risk. It doesn't know that the billing module deserves 3x the scrutiny of the "About Us" page unless you tell it, every time.</li>
+    <li><strong>Institutional memory.</strong> It doesn't know your team's history of flaky tests, past incidents, or why a particular workaround exists in the codebase — context that lives in people's heads, not in the code it can see.</li>
+    <li><strong>Confident wrongness.</strong> A generated test case or a root-cause explanation can be fluent and entirely wrong, and it reads exactly as confidently as a correct one. Every output needs a human who understands the system checking it — treating AI output as a draft, not an answer.</li>
+    <li><strong>Genuinely novel exploratory testing.</strong> The kind of testing where you're poking at a system with no script in mind, following a hunch about where a boundary might be soft — that instinct doesn't come from pattern-matching against training data, it comes from having broken enough systems to have intuition about where they break.</li>
+  </ul>
+
+  <h2>Quick notes on the tools, from actual use</h2>
+
+  <ul>
+    <li><strong>ChatGPT</strong> — best general-purpose reasoning for triage and summarization; no native visibility into my codebase unless I paste context in manually.</li>
+    <li><strong>Claude</strong> — strong at longer, more careful reasoning through multi-step root-cause questions and at holding a large amount of pasted context (logs, multiple files) without losing the thread.</li>
+    <li><strong>GitHub Copilot</strong> — the tightest in-editor loop for scaffolding test code, because it sees my actual page objects and file structure as it suggests completions.</li>
+    <li><strong>Cursor</strong> — similar strength to Copilot but with more control over exactly what context it's given, which matters when a repo has conventions a plain autocomplete would ignore.</li>
+    <li><strong>Gemini</strong> — useful as a second opinion when cross-checking a generated explanation or test case against a different model's read of the same input, catching cases where one model's confident answer was actually wrong.</li>
+  </ul>
+
+  <blockquote>
+    None of these tools changed what "correct" means for the systems I test. They changed how fast I can get from "I know what needs testing" to "the test exists." That gap used to cost me hours. Now it costs me minutes, with review time added back in — which is a real trade, not a magic one.
+  </blockquote>
+
+</article>
+
+<div class="article-author">
+  <div class="author-card">
+    <div class="author-avatar">NK</div>
+    <div>
+      <div class="author-name">Nigar Kana</div>
+      <div class="author-role">Software Quality Engineer · ISTQB Certified · Vancouver, Canada</div>
+    </div>
+    <div class="author-links">
+      <a href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nigarkana/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <h3>More from the blog</h3>
+  <a href="from-qa-to-quality-engineer.html" class="more-link">
+    <div class="more-link-title">From QA Analyst to Software Quality Engineer: How the Role Has Changed</div>
+    <div class="more-link-desc">Seven years in QA taught me that the job stopped being "find the bugs" a while ago.</div>
+  </a>
+  <a href="production-ready-playwright-framework.html" class="more-link">
+    <div class="more-link-title">Building a Production-Ready Playwright Framework with GitHub Actions</div>
+    <div class="more-link-desc">The architecture decisions behind a Playwright suite that survives a real project, not a demo.</div>
+  </a>
+</div>
+
+<footer>
+  // built and maintained by Nigar Kana · Software Quality Engineer · Vancouver · 2026
+</footer>
+
+</body>
+</html>

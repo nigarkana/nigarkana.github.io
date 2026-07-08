@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From QA Analyst to Software Quality Engineer: How the Role Has Changed | Nigar Kana</title>
+  <meta name="description" content="Seven years in QA taught me that the job stopped being 'find the bugs' a while ago. Here's how the role has actually changed — and what it means for how I work." />
+  <meta property="og:title" content="From QA Analyst to Software Quality Engineer: How the Role Has Changed" />
+  <meta property="og:description" content="Seven years in QA across government, healthcare, and fintech projects taught me that the job stopped being 'find the bugs' a while ago." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nigarkana.github.io/blog/from-qa-to-quality-engineer.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://nigarkana.github.io/blog/from-qa-to-quality-engineer.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI3IiBmaWxsPSIjMUUzQTVGIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJyxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE1IiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0Y1RjdGQSI+Tks8L3RleHQ+PC9zdmc+" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/blog.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">NSK.qa</a>
+    <a href="../index.html#blog" class="nav-back">← Back to portfolio</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-eyebrow">// perspective</div>
+  <h1 class="article-title">From QA Analyst to Software Quality Engineer: How the Role Has Changed</h1>
+  <p class="article-dek">
+    Seven years ago my job was to find bugs before customers did. Today the bugs are still part of it — but they're the smallest part. Here's what actually changed, told through projects I've worked on, not a textbook.
+  </p>
+  <div class="article-meta">
+    <span>Nigar Kana</span>
+    <span class="dot">·</span>
+    <span>9 min read</span>
+    <span class="dot">·</span>
+    <span>Quality Engineering</span>
+  </div>
+  <div class="article-tags">
+    <span class="atag">Quality Engineering</span>
+    <span class="atag">Shift Left</span>
+    <span class="atag">CI/CD</span>
+    <span class="atag">Release Confidence</span>
+    <span class="atag">Career</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>
+    When I started in QA, the job had a clear shape: developers built the feature, I received a build, I tested it against a spec, I logged what was broken, and I moved on to the next ticket. It was reactive by design — quality was something checked at the end, by someone who wasn't in the room when the decisions were made.
+  </p>
+
+  <p>
+    That model doesn't survive contact with modern release cadence. When a team ships to production multiple times a week, "test at the end" isn't a phase anymore — there is no end, there's just a continuous stream of change that needs continuous confidence. Over seven years across government permitting systems, hospital management platforms, fintech, and enterprise CRMs, I've watched — and had to personally adapt to — that shift from QA as a checkpoint to quality engineering as a discipline that's threaded through the whole delivery pipeline.
+  </p>
+
+  <h2>The job used to end at "I found the bug." Now it starts there.</h2>
+
+  <p>
+    On an <strong>electronic construction permitting system</strong> I tested, the workflow spanned document upload, approval routing across three distinct user roles, and status tracking that had to stay consistent no matter which role touched a permit. Finding the 11 critical defects in that system wasn't the hard part — the boring, mechanical execution of test cases will always surface bugs. The hard part was figuring out <em>why</em> role-based access kept breaking in specific edge cases, feeding that back into how the team thought about permission design, and making sure the same class of bug couldn't quietly reappear three sprints later.
+  </p>
+
+  <p>
+    That's the real difference between QA and quality engineering: QA asks "does this work?" Quality engineering asks "why did this break, and what do we change so an entire category of failure becomes structurally harder to ship?" One is inspection. The other is prevention, and prevention means getting involved earlier and staying involved later than a traditional QA analyst ever did.
+  </p>
+
+  <h2>Shift left, shift right — not a slogan, a change in where I spend my time</h2>
+
+  <p>
+    "Shift left" gets thrown around as a buzzword, but in practice it just means quality conversations happen before code exists, not after. On a <strong>hospital management system</strong> I tested — patient registration, scheduling, billing, EMR — the modules with real clinical risk were patient-data accuracy and access control. If I'd waited until those modules were "done" to start thinking about test coverage, I'd have been designing test cases against a system that already had bad assumptions baked into it. Instead, the useful work happened earlier: reviewing requirements for ambiguity, flagging where a permission boundary wasn't clearly specified, asking "what happens if two roles overlap" before a single line of the access-control logic was written. Zero patient-data defects reached production on that project, and that outcome was decided in requirements review, not in the test-execution phase.
+  </p>
+
+  <p>
+    Shift right is the less-discussed half. It's the acknowledgment that no amount of pre-release testing simulates real production traffic, real data shapes, and real user behavior. On a document management system that went through three release cycles, the regression suite told us the system was internally consistent — but the questions that mattered post-launch were about data integrity under real usage patterns we hadn't fully anticipated. Quality engineering means caring about what happens after the deploy button is pressed, not treating that as someone else's problem.
+  </p>
+
+  <div class="diagram-block">SHIFT LEFT                                    SHIFT RIGHT
+──────────                                    ───────────
+Requirements review        Release        Production monitoring
+Design feedback              │            Real-user error rates
+Early test design            │            Feature flags / rollback
+Static analysis, linting     ▼            Synthetic monitoring
+        └──────────► Continuous confidence ◄──────────┘
+                     (not a single gate)</div>
+
+  <h2>Quality gates replaced the "final sign-off" meeting</h2>
+
+  <p>
+    In the old model, there was a moment — a meeting, an email, a signature — where QA declared a release "good to go." That doesn't scale to weekly or daily deploys, and it puts an unreasonable amount of judgment on one person at one point in time. What replaces it is a series of automated gates that a change has to pass through before it's allowed to move forward: does it build, does it pass the regression suite, does it meet a coverage threshold, does the API contract still hold. On the automation suite I built and maintain publicly (Playwright, GitHub Actions, running on every push), that gate is not a person reviewing a checklist — it's the pipeline itself refusing to go green until the suite passes. That's a more honest form of release confidence than a sign-off ever was, because it's enforced by the system, not by memory.
+  </p>
+
+  <p>
+    This is also where CI/CD ownership stopped being "a DevOps thing" and became something I consider part of my job. A test suite that only runs when someone remembers to run it locally isn't a quality gate, it's a suggestion. Wiring tests into the pipeline, keeping the pipeline fast enough that people don't route around it, and making failures visible and specific — that's quality engineering work, not infrastructure work someone else does on my behalf.
+  </p>
+
+  <h2>Observability: knowing something broke without a customer telling you first</h2>
+
+  <p>
+    Across an enterprise CRM engagement, I maintained a 95%+ regression pass rate ahead of every sprint release. That number is comforting, but it's also incomplete — it tells you about the release, not about what happens to real users across four integrated systems after that release ships. The uncomfortable truth is that pre-release testing, however thorough, is a sample of possible states, not all of them. Quality engineers increasingly need to care about what production telemetry, error rates, and monitoring dashboards are actually saying, because that's the feedback loop that catches the 5% a regression suite structurally can't reach.
+  </p>
+
+  <h2>AI changed the mechanics, not the judgment</h2>
+
+  <p>
+    I've been experimenting with AI-assisted workflows — generating test cases from user stories, producing synthetic test data, turning a plain-language scenario into an executable Playwright script through prompt engineering. It's genuinely useful for compressing the mechanical parts of the job: scaffolding a test file, suggesting edge cases I might not have thought of first, summarizing a wall of failure logs into "here's probably what broke." What it hasn't changed is the part of the job that was always the actual skill — deciding <em>which</em> edge cases matter for this specific system, reading a requirement and knowing it's ambiguous, knowing that a hospital system and a marketing site don't carry the same risk profile even if the UI looks similarly "tested." AI is a force multiplier on execution. It is not a substitute for understanding what quality means for the system in front of you.
+  </p>
+
+  <h2>What this means for the skills that matter now</h2>
+
+  <ul>
+    <li><strong>Reading a system, not just a spec.</strong> Understanding what actually carries risk — financial calculations, patient data, access control — and weighting testing effort accordingly, rather than treating every module as equally important.</li>
+    <li><strong>Owning the pipeline, not just the test cases.</strong> Being able to write, wire up, and maintain a CI workflow, not hand that off and wait for someone else to run your tests.</li>
+    <li><strong>Communicating risk, not just defects.</strong> A defect count means little to a stakeholder. "This module has zero coverage on the failure path and it touches billing" gets a decision made.</li>
+    <li><strong>Working comfortably with AI tooling</strong> without outsourcing judgment to it — using it to move faster on mechanical work while staying the one who decides what "correct" means.</li>
+    <li><strong>Still being willing to do exploratory, manual testing.</strong> Automation catches regressions. It doesn't catch the thing nobody wrote a test for, which is usually where the interesting bugs live.</li>
+  </ul>
+
+  <blockquote>
+    The title on my resume still says QA Analyst in places, and I'm not precious about the label. What changed isn't the job title — it's that "did we test this" stopped being the only question worth asking. The better question is "how confident are we, and why."
+  </blockquote>
+
+  <p>
+    That's the shift, in practice rather than in theory. Not a rebrand, not a new set of tools for their own sake — a different relationship to when quality work happens, who's accountable for it, and how much of it can honestly be delegated to a pipeline versus how much still needs a person who understands the system asking better questions, earlier.
+  </p>
+
+</article>
+
+<div class="article-author">
+  <div class="author-card">
+    <div class="author-avatar">NK</div>
+    <div>
+      <div class="author-name">Nigar Kana</div>
+      <div class="author-role">Software Quality Engineer · ISTQB Certified · Vancouver, Canada</div>
+    </div>
+    <div class="author-links">
+      <a href="https://www.linkedin.com/in/nigarkana/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nigarkana/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <h3>More from the blog</h3>
+  <a href="production-ready-playwright-framework.html" class="more-link">
+    <div class="more-link-title">Building a Production-Ready Playwright Framework with GitHub Actions</div>
+    <div class="more-link-desc">The architecture decisions behind a Playwright suite that survives a real project, not a demo.</div>
+  </a>
+  <a href="end-to-end-testing-strategy.html" class="more-link">
+    <div class="more-link-title">End-to-End Testing Strategy for Modern Web Applications</div>
+    <div class="more-link-desc">How the different kinds of testing fit together from requirements through production.</div>
+  </a>
+  <a href="lessons-from-seven-years-in-qa.html" class="more-link">
+    <div class="more-link-title">Lessons Learned from Seven Years in Software Quality</div>
+    <div class="more-link-desc">Not a list of tools. The engineering judgment that only came from getting it wrong first.</div>
+  </a>
+</div>
+
+<footer>
+  // built and maintained by Nigar Kana · Software Quality Engineer · Vancouver · 2026
+</footer>
+
+</body>
+</html>
