@@ -66,7 +66,7 @@ Security      ─┘                     │
   <h2>Unit testing: not my job to write, but my job to trust</h2>
 
   <p>
-    Unit tests belong to developers, and I say that deliberately rather than territorially — the person writing a function is best positioned to test its internal logic, edge cases, and error handling at the level of a single method. My responsibility at this layer isn't writing unit tests, it's knowing whether they're trustworthy: is coverage concentrated on trivial getters while the actual business logic — the interest calculation on a microfinance platform, the permission check on a document management system — is thinly tested or untested? A QA strategy that ignores unit-level coverage and tries to catch everything at the UI layer is expensive and slow. A QA strategy that assumes unit tests caught everything and skips deeper verification is naive. The right posture is asking developers pointed questions about what's covered, not writing the tests myself.
+    Unit tests belong to developers, and I say that deliberately rather than territorially — the person writing a function is best positioned to test its internal logic, edge cases, and error handling at the level of a single method. My responsibility at this layer isn't writing unit tests, it's knowing whether they're trustworthy: is coverage concentrated on trivial getters while the actual business logic — the payroll calculation on an HRM platform, the permission check on a government permitting system — is thinly tested or untested? A QA strategy that ignores unit-level coverage and tries to catch everything at the UI layer is expensive and slow. A QA strategy that assumes unit tests caught everything and skips deeper verification is naive. The right posture is asking developers pointed questions about what's covered, not writing the tests myself.
   </p>
 
   <h2>API testing: where the real logic actually lives</h2>
@@ -84,13 +84,13 @@ Security      ─┘                     │
   <h2>Contract testing: catching integration breaks before they reach a shared environment</h2>
 
   <p>
-    On systems with multiple integrated services — the four-system CRM environment I tested is a good example — the failure mode that traditional UI or API tests miss is drift: the frontend expects a field the backend stopped sending, or a downstream service assumes a shape the API contract no longer guarantees. Contract testing verifies that producer and consumer agree on a schema independently of a full integration environment being up, which matters most exactly when a real integrated environment is expensive or slow to stand up. It's the layer that catches "these two teams both changed their side and nobody noticed until staging" before staging.
+    On systems with multiple integrated services — the payment gateway integration on the government permitting system I tested is a good example — the failure mode that traditional UI or API tests miss is drift: the frontend expects a field the backend stopped sending, or a downstream service assumes a shape the API contract no longer guarantees. Contract testing verifies that producer and consumer agree on a schema independently of a full integration environment being up, which matters most exactly when a real integrated environment is expensive or slow to stand up. It's the layer that catches "these two teams both changed their side and nobody noticed until staging" before staging.
   </p>
 
   <h2>Exploratory testing: the layer with no script</h2>
 
   <p>
-    Every layer above this one tests what someone thought to specify in advance. Exploratory testing is where I actively try to break the system based on intuition about where it's likely to be soft — rapid double-submits, browser back-button navigation mid-workflow, session timeout during a multi-step form. On an EdTech platform I tested across four sprint cycles, a meaningful share of the defects found came from exploratory sessions, not the scripted regression suite — because scripted tests only catch what someone already thought to write down, and the interesting bugs live in the gaps nobody thought to specify.
+    Every layer above this one tests what someone thought to specify in advance. Exploratory testing is where I actively try to break the system based on intuition about where it's likely to be soft — rapid double-submits, browser back-button navigation mid-workflow, session timeout during a multi-step form. On mobile app releases I've tested across Android and iOS, a meaningful share of the defects found came from exploratory sessions, not the scripted regression suite — because scripted tests only catch what someone already thought to write down, and the interesting bugs live in the gaps nobody thought to specify.
   </p>
 
   <h2>Accessibility: tested, not assumed</h2>
@@ -108,7 +108,7 @@ Security      ─┘                     │
   <h2>Security awareness: a QA responsibility even without a dedicated pentest</h2>
 
   <p>
-    I'm not a security engineer, and pretending otherwise would be dishonest. But security awareness — testing for the OWASP-class issues within reach of functional testing: input validation gaps that enable injection, authorization checks that can be bypassed by changing a URL parameter, sensitive data appearing in a response that shouldn't include it — is squarely within a quality engineer's scope. On the government and healthcare systems I've tested, verifying role-based access control wasn't just a functional requirement, it was the security control, and testing it thoroughly was quality work and security work at the same time.
+    I'm not a security engineer, and pretending otherwise would be dishonest. But security awareness — testing for the OWASP-class issues within reach of functional testing: input validation gaps that enable injection, authorization checks that can be bypassed by changing a URL parameter, sensitive data appearing in a response that shouldn't include it — is squarely within a quality engineer's scope. On the government and enterprise systems I've tested, verifying role-based access control wasn't just a functional requirement, it was the security control, and testing it thoroughly was quality work and security work at the same time.
   </p>
 
   <h2>Production monitoring: the strategy doesn't end at deploy</h2>

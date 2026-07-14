@@ -6,7 +6,7 @@
   <title>From QA Analyst to Software Quality Engineer: How the Role Has Changed | Nigar Kana</title>
   <meta name="description" content="A decade in QA taught me that the job stopped being 'find the bugs' a while ago. Here's how the role has actually changed — and what it means for how I work." />
   <meta property="og:title" content="From QA Analyst to Software Quality Engineer: How the Role Has Changed" />
-  <meta property="og:description" content="A decade in QA across government, healthcare, and fintech projects taught me that the job stopped being 'find the bugs' a while ago." />
+  <meta property="og:description" content="A decade in QA across government, telecom, and enterprise projects taught me that the job stopped being 'find the bugs' a while ago." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://nigarkana.github.io/blog/from-qa-to-quality-engineer.html" />
   <meta name="twitter:card" content="summary" />
@@ -55,13 +55,13 @@
   </p>
 
   <p>
-    That model doesn't survive contact with modern release cadence. When a team ships to production multiple times a week, "test at the end" isn't a phase anymore — there is no end, there's just a continuous stream of change that needs continuous confidence. Over a decade across government permitting systems, hospital management platforms, fintech, and enterprise CRMs, I've watched — and had to personally adapt to — that shift from QA as a checkpoint to quality engineering as a discipline that's threaded through the whole delivery pipeline.
+    That model doesn't survive contact with modern release cadence. When a team ships to production multiple times a week, "test at the end" isn't a phase anymore — there is no end, there's just a continuous stream of change that needs continuous confidence. Over a decade across government permitting systems, telecom networks, and enterprise HRM platforms, I've watched — and had to personally adapt to — that shift from QA as a checkpoint to quality engineering as a discipline that's threaded through the whole delivery pipeline.
   </p>
 
   <h2>The job used to end at "I found the bug." Now it starts there.</h2>
 
   <p>
-    On an <strong>electronic construction permitting system</strong> I tested, the workflow spanned document upload, approval routing across three distinct user roles, and status tracking that had to stay consistent no matter which role touched a permit. Finding the 11 critical defects in that system wasn't the hard part — the boring, mechanical execution of test cases will always surface bugs. The hard part was figuring out <em>why</em> role-based access kept breaking in specific edge cases, feeding that back into how the team thought about permission design, and making sure the same class of bug couldn't quietly reappear three sprints later.
+    On the <strong>electronic construction permitting system</strong> I led testing for, the workflow spanned document upload, a secure payment gateway integration, approval routing across multiple user roles, and status tracking that had to stay consistent no matter which role touched a permit. Finding defects in that system wasn't the hard part — the boring, mechanical execution of test cases will always surface bugs. The hard part was figuring out <em>why</em> role-based access kept breaking in specific edge cases, feeding that back into how the team thought about permission design, and making sure the same class of bug couldn't quietly reappear three sprints later.
   </p>
 
   <p>
@@ -71,11 +71,11 @@
   <h2>Shift left, shift right — not a slogan, a change in where I spend my time</h2>
 
   <p>
-    "Shift left" gets thrown around as a buzzword, but in practice it just means quality conversations happen before code exists, not after. On a <strong>hospital management system</strong> I tested — patient registration, scheduling, billing, EMR — the modules with real clinical risk were patient-data accuracy and access control. If I'd waited until those modules were "done" to start thinking about test coverage, I'd have been designing test cases against a system that already had bad assumptions baked into it. Instead, the useful work happened earlier: reviewing requirements for ambiguity, flagging where a permission boundary wasn't clearly specified, asking "what happens if two roles overlap" before a single line of the access-control logic was written. Zero patient-data defects reached production on that project, and that outcome was decided in requirements review, not in the test-execution phase.
+    "Shift left" gets thrown around as a buzzword, but in practice it just means quality conversations happen before code exists, not after. Leading QA for a set of <strong>HRM and payroll systems</strong> serving 30,000 daily users, the modules with real risk were the ones touching salary data and approval permissions — who could view compensation records, who could approve a payroll run. If I'd waited until those modules were "done" to start thinking about test coverage, I'd have been designing test cases against a system that already had bad assumptions baked into it. Instead, the useful work happened earlier: reviewing requirements for ambiguity, flagging where a permission boundary wasn't clearly specified, asking "what happens if two roles overlap" before a single line of the access-control logic was written. That's the kind of gap that's far cheaper to catch in a five-minute requirements conversation than in a defect report three sprints later.
   </p>
 
   <p>
-    Shift right is the less-discussed half. It's the acknowledgment that no amount of pre-release testing simulates real production traffic, real data shapes, and real user behavior. On a document management system that went through three release cycles, the regression suite told us the system was internally consistent — but the questions that mattered post-launch were about data integrity under real usage patterns we hadn't fully anticipated. Quality engineering means caring about what happens after the deploy button is pressed, not treating that as someone else's problem.
+    Shift right is the less-discussed half. It's the acknowledgment that no amount of pre-release testing simulates real production traffic, real data shapes, and real user behavior. On the telecom platforms I tested at Wipro — 20+ solutions running across a live production network — the regression suite told us each release was internally consistent, but real network conditions and real subscriber behavior surfaced incidents that pre-release testing structurally couldn't simulate. Root-causing those incidents and feeding the pattern back into regression scope was shift-right in practice, not theory. Quality engineering means caring about what happens after the deploy button is pressed, not treating that as someone else's problem.
   </p>
 
   <div class="diagram-block">SHIFT LEFT                                    SHIFT RIGHT
@@ -100,19 +100,19 @@ Static analysis, linting     ▼            Synthetic monitoring
   <h2>Observability: knowing something broke without a customer telling you first</h2>
 
   <p>
-    Across an enterprise CRM engagement, I maintained a 95%+ regression pass rate ahead of every sprint release. That number is comforting, but it's also incomplete — it tells you about the release, not about what happens to real users across four integrated systems after that release ships. The uncomfortable truth is that pre-release testing, however thorough, is a sample of possible states, not all of them. Quality engineers increasingly need to care about what production telemetry, error rates, and monitoring dashboards are actually saying, because that's the feedback loop that catches the 5% a regression suite structurally can't reach.
+    On the government permitting system I tested, load, spike, and stress testing with JMeter told us the platform held up under simulated peak conditions. That's comforting, but it's also incomplete — a simulated load test and real citizen traffic on the day a filing deadline hits are not the same thing. The uncomfortable truth is that pre-release testing, however thorough, is a sample of possible states, not all of them. Quality engineers increasingly need to care about what production telemetry, error rates, and monitoring dashboards are actually saying, because that's the feedback loop that catches what a regression suite, however thorough, was never going to reach.
   </p>
 
   <h2>AI changed the mechanics, not the judgment</h2>
 
   <p>
-    I've been experimenting with AI-assisted workflows — generating test cases from user stories, producing synthetic test data, turning a plain-language scenario into an executable Playwright script through prompt engineering. It's genuinely useful for compressing the mechanical parts of the job: scaffolding a test file, suggesting edge cases I might not have thought of first, summarizing a wall of failure logs into "here's probably what broke." What it hasn't changed is the part of the job that was always the actual skill — deciding <em>which</em> edge cases matter for this specific system, reading a requirement and knowing it's ambiguous, knowing that a hospital system and a marketing site don't carry the same risk profile even if the UI looks similarly "tested." AI is a force multiplier on execution. It is not a substitute for understanding what quality means for the system in front of you.
+    I've been experimenting with AI-assisted workflows — generating test cases from user stories, producing synthetic test data, turning a plain-language scenario into an executable Playwright script through prompt engineering. It's genuinely useful for compressing the mechanical parts of the job: scaffolding a test file, suggesting edge cases I might not have thought of first, summarizing a wall of failure logs into "here's probably what broke." What it hasn't changed is the part of the job that was always the actual skill — deciding <em>which</em> edge cases matter for this specific system, reading a requirement and knowing it's ambiguous, knowing that a payment gateway and a marketing site don't carry the same risk profile even if the UI looks similarly "tested." AI is a force multiplier on execution. It is not a substitute for understanding what quality means for the system in front of you.
   </p>
 
   <h2>What this means for the skills that matter now</h2>
 
   <ul>
-    <li><strong>Reading a system, not just a spec.</strong> Understanding what actually carries risk — financial calculations, patient data, access control — and weighting testing effort accordingly, rather than treating every module as equally important.</li>
+    <li><strong>Reading a system, not just a spec.</strong> Understanding what actually carries risk — payment transactions, payroll data, access control — and weighting testing effort accordingly, rather than treating every module as equally important.</li>
     <li><strong>Owning the pipeline, not just the test cases.</strong> Being able to write, wire up, and maintain a CI workflow, not hand that off and wait for someone else to run your tests.</li>
     <li><strong>Communicating risk, not just defects.</strong> A defect count means little to a stakeholder. "This module has zero coverage on the failure path and it touches billing" gets a decision made.</li>
     <li><strong>Working comfortably with AI tooling</strong> without outsourcing judgment to it — using it to move faster on mechanical work while staying the one who decides what "correct" means.</li>

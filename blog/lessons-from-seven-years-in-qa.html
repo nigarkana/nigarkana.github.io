@@ -6,7 +6,7 @@
   <title>Lessons Learned from Over a Decade in Software Quality | Nigar Kana</title>
   <meta name="description" content="Not a list of technologies. Engineering lessons from over a decade in QA — the bugs automation never catches, the cost of flaky tests, and how to earn a developer's trust." />
   <meta property="og:title" content="Lessons Learned from Over a Decade in Software Quality" />
-  <meta property="og:description" content="Engineering lessons from over a decade in QA across government, healthcare, and fintech — not a list of tools, a list of things that actually took years to learn." />
+  <meta property="og:description" content="Engineering lessons from over a decade in QA across government, telecom, and enterprise systems — not a list of tools, a list of things that actually took years to learn." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://nigarkana.github.io/blog/lessons-from-seven-years-in-qa.html" />
   <meta name="twitter:card" content="summary" />
@@ -30,7 +30,7 @@
   <div class="article-eyebrow">// reflection</div>
   <h1 class="article-title">Lessons Learned from Over a Decade in Software Quality</h1>
   <p class="article-dek">
-    Not a list of tools I've used. A list of things I only learned by getting them wrong first — across government systems, hospital platforms, fintech, and enterprise CRMs.
+    Not a list of tools I've used. A list of things I only learned by getting them wrong first — across government systems, telecom networks, and enterprise HRM platforms.
   </p>
   <div class="article-meta">
     <span>Nigar Kana</span>
@@ -56,7 +56,7 @@
   <h2>Automation doesn't catch the bugs you didn't think to write a test for</h2>
 
   <p>
-    This sounds obvious stated plainly, and it's still the lesson I see automation-heavy teams forget in practice. A regression suite is a fixed set of assertions about a system's expected behavior — it is, by definition, blind to anything outside that set. On an EdTech platform I tested, a meaningful share of real defects came from exploratory sessions, not the scripted suite, because the scripted suite could only ever verify what someone had already anticipated. The mistake is treating a green pipeline as "no bugs" instead of "no bugs in the specific set of things we thought to check." Those are very different claims, and conflating them is how confident teams get surprised.
+    This sounds obvious stated plainly, and it's still the lesson I see automation-heavy teams forget in practice. A regression suite is a fixed set of assertions about a system's expected behavior — it is, by definition, blind to anything outside that set. On the Shopify e-commerce site I test today, cross-browser and cross-device exploratory sessions have surfaced functional, usability, and responsive-design issues the scripted regression suite never would have — because the scripted suite could only ever verify what someone had already anticipated. The mistake is treating a green pipeline as "no bugs" instead of "no bugs in the specific set of things we thought to check." Those are very different claims, and conflating them is how confident teams get surprised.
   </p>
 
   <h2>Exploratory testing isn't a lesser skill — it's the harder one</h2>
