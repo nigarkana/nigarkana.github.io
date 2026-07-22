@@ -957,7 +957,7 @@
     }
     .cert-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
       gap: 14px;
       margin-top: 28px;
     }
@@ -1139,7 +1139,6 @@
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
       .project-card.flagship .project-body { grid-template-columns: 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
-      .cert-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .contact-inner { grid-template-columns: 1fr; }
       .why-inner { grid-template-columns: 1fr; }
@@ -1231,7 +1230,7 @@
     <div class="stat-item">
       <div class="stat-number">ISTQB</div>
       <div class="stat-label">Certified Tester</div>
-      <div class="stat-sub">+ Atlassian · Azure DevOps</div>
+      <div class="stat-sub">Foundation Level</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">3×</div>
@@ -1382,7 +1381,7 @@
   <div class="section-inner">
     <div class="section-eyebrow">// work history</div>
     <h2 class="section-title">Professional Experience</h2>
-    <p class="section-desc">10+ years of QA delivery spanning government, telecom, and e-commerce applications across Bangladesh and Canada.</p>
+    <p class="section-desc">10+ years of QA delivery spanning government, telecom, retail, and e-commerce applications across Bangladesh and Canada.</p>
 
     <div class="exp-timeline">
 
@@ -1392,16 +1391,41 @@
         </div>
         <div class="exp-dot accent"></div>
         <div class="exp-content">
+          <div class="exp-role">Information Systems Quality Assurance (QA) Analyst</div>
+          <div class="exp-company">Swavu Ltd · Remote, Canada <span style="color:var(--text-muted);">(Rwanda-based retail platform) — 12-month contract</span></div>
+          <ul class="exp-bullets">
+            <li>Serving as the founding QA hire for Swavu's unified Mobile and Web platform — loyalty, product authenticity/QR verification, shop locator, and returns — building the QA practice from the ground up for a small, fast-moving team of 2–3 developers.</li>
+            <li>Reviewing requirements, wireframes, design documents, and system architecture across all platform modules, and mapping the full Mobile → Zoho Mail → CRM integration workflow to define test scenarios for each stage.</li>
+            <li>Defining the QA strategy — test types, coverage targets, environments, tooling, and data management approach — for the full 12-month engagement.</li>
+            <li>Setting up a Playwright automation framework for web and mobile surfaces and configuring CI/CD pipeline integration with GitHub Actions.</li>
+            <li>Building a test case library covering all platform modules and establishing defect tracking workflows and reporting cadences.</li>
+            <li>Establishing QA standards and procedures to be applied consistently across the development lifecycle.</li>
+            <li>Leveraging AI coding assistants (GitHub Copilot, Claude) to accelerate test automation scripting and maintain delivery velocity.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="etag">QA Strategy</span>
+            <span class="etag">Playwright</span>
+            <span class="etag">GitHub Actions</span>
+            <span class="etag">0→1 QA</span>
+            <span class="etag">GitHub Copilot</span>
+            <span class="etag">Mobile & Web</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">
+          <div class="exp-year">Jun 2026 — Present</div>
+        </div>
+        <div class="exp-dot"></div>
+        <div class="exp-content">
           <div class="exp-role">Software QA Engineer <span style="font-weight:400; color:var(--text-muted);">(Volunteer)</span></div>
           <div class="exp-company">A Fish Company · Surrey, BC, Canada <span style="color:var(--text-muted);">— 3 hrs/week</span></div>
           <ul class="exp-bullets">
-            <li>Designed, executed, and maintained manual test cases (smoke, functional, regression, end-to-end) for a live Shopify e-commerce site, covering product browsing, cart, checkout, payment (Visa, Mastercard, Apple Pay, Google Pay, Shop Pay), and order confirmation.</li>
-            <li>Validated product catalog accuracy — pricing, variants, inventory status, images, promotional content — and confirmed business rules including delivery eligibility and shipping charges.</li>
-            <li>Performed cross-browser and cross-device testing (desktop/mobile), surfacing functional, usability, and responsive-design issues.</li>
-            <li>Developed and maintained a Playwright automation framework in JavaScript to automate regression testing for critical Shopify workflows and integrated it with GitHub Actions for continuous execution.</li>
-            <li>Validated REST API request/response payloads using Postman and performed k6 load testing to verify application stability under concurrent traffic.</li>
-            <li>Logged, triaged, tracked, and verified 50+ defects through the full lifecycle in Trello, collaborating with developers to confirm fixes ahead of releases.</li>
-            <li>Used ChatGPT, Claude, and Claude Code to accelerate test case generation and automation script development, with manual review and validation of all AI-assisted outputs.</li>
+            <li>Design and execute manual and automated test cases (functional, regression, end-to-end) for a live Shopify e-commerce site, covering cart, checkout, payment, and order confirmation workflows.</li>
+            <li>Developed and maintained a Playwright automation framework using JavaScript and Page Object Model (POM) design, integrated with GitHub Actions for continuous execution.</li>
+            <li>Validated REST API request/response payloads using Postman and ran k6 load tests to gauge application stability under concurrent traffic.</li>
+            <li>Applied ChatGPT, Claude, and Claude Code to expedite test case generation, automation script development, and exploratory/bug analysis, with manual review and validation applied to all AI-assisted outputs.</li>
           </ul>
           <div class="exp-tags">
             <span class="etag">Playwright</span>
@@ -1424,12 +1448,12 @@
           <div class="exp-company">RTI International, USA · Dhaka, Bangladesh</div>
           <ul class="exp-bullets">
             <li>Led a cross-functional QA team delivering end-to-end quality assurance for the Electronic Construction Permitting System (ECPS), gathering business requirements directly from end users and collaborating with stakeholders, developers, and government users throughout the SDLC.</li>
-            <li>Defined QA strategy, release readiness criteria, and a risk-based testing approach; designed test frameworks and maintained test environments that closely replicated production systems.</li>
+            <li>Formulated QA strategy, release readiness criteria, and a risk-based testing approach; designed test frameworks and maintained test environments that closely replicated production systems.</li>
             <li>Directed testing for the integration of a secure payment gateway into the ECPS, enabling seamless transactions via debit, credit, and mobile banking platforms.</li>
-            <li>Developed and executed test plans and test cases spanning functional, integration, regression, end-to-end, UAT, and API testing; managed defects through their full lifecycle using the Incident Management bug tracker.</li>
-            <li>Executed load, spike, and stress testing using JMeter to validate system performance under peak conditions.</li>
+            <li>Developed and executed test plans and test cases spanning functional, integration, regression, end-to-end, UAT, and API testing; managed defects through their full lifecycle — identification, triage, verification, and closure — using the Incident Management bug tracker.</li>
+            <li>Ran load, spike, and stress testing using JMeter to validate system performance under peak conditions.</li>
             <li>Automated high-risk, repetitive test cases using Selenium and Python, reducing manual testing effort by 20% and increasing team efficiency by 15%.</li>
-            <li>Directed task tracking in Jira and led documentation and knowledge-sharing efforts in Confluence.</li>
+            <li>Coordinated task tracking in Jira and led documentation and knowledge-sharing efforts in Confluence.</li>
           </ul>
           <div class="exp-tags">
             <span class="etag">Risk-Based Testing</span>
@@ -1453,11 +1477,11 @@
           <ul class="exp-bullets">
             <li>Executed real-time testing for 20+ solutions across Bangladesh's largest telecom network to ensure performance and reliability.</li>
             <li>Established and managed pre-production backend testing environments, including MySQL databases, to support effective System Integration Testing (SIT).</li>
-            <li>Executed API and backend validation to ensure seamless integration between telecom applications and enterprise systems.</li>
+            <li>Conducted API and backend validation to ensure reliable integration between telecom applications and enterprise systems.</li>
             <li>Diagnosed root causes of incidents and problems and implemented corrective measures to prevent recurrence.</li>
             <li>Led 25+ User Acceptance Testing (UAT) cycles and delivered 55+ training sessions for end users and stakeholders.</li>
-            <li>Collaborated effectively across multiple time zones and cross-functional teams throughout the release lifecycle.</li>
-            <li>Automated repetitive test cases using Robot Framework, reducing manual regression effort.</li>
+            <li>Collaborated effectively across multiple time zones and interdisciplinary teams throughout the release lifecycle.</li>
+            <li>Scripted automated test cases using Robot Framework, reducing manual regression effort.</li>
           </ul>
           <div class="exp-tags">
             <span class="etag">Telecom</span>
@@ -1480,8 +1504,8 @@
           <ul class="exp-bullets">
             <li>Tested DIRD Management Systems — HRM, Payroll, Inventory, Procurement, and Fixed Asset Management — supporting 30,000 daily users.</li>
             <li>Contributed to the successful release and production stability of the "Sheiboi" mobile application for Android and iOS through comprehensive functional and regression testing.</li>
-            <li>Established standardized QA processes, tools, and best practices — test case design, execution, defect tracking, and reporting — continuously improving methodologies to increase efficiency.</li>
-            <li>Automated high-risk, repetitive test cases using Selenium and Python, reducing manual effort by 25% and improving testing efficiency by approximately 20%.</li>
+            <li>Instituted standardized QA processes, tools, and best practices — test case design, execution, defect tracking, and reporting — continuously improving methodologies to increase efficiency.</li>
+            <li>Engineered automated regression suites for high-risk, repetitive test scenarios using Selenium and Python, cutting manual test execution by 25% and lifting QA throughput by approximately 20%.</li>
           </ul>
           <div class="exp-tags">
             <span class="etag">Team Leadership</span>
@@ -1765,7 +1789,7 @@
   <div class="section-inner">
     <div class="section-eyebrow">// background</div>
     <h2 class="section-title">Education & Certifications</h2>
-    <p class="section-desc">Dual master's degrees in computer science and project management, backed by internationally recognised QA and DevOps certifications.</p>
+    <p class="section-desc">Dual master's degrees in computer science and project management, backed by an internationally recognised QA certification.</p>
 
     <div class="edu-grid">
       <div class="edu-card">
@@ -1790,16 +1814,6 @@
         <div class="cert-badge">ISTQB</div>
         <div class="cert-name">ISTQB Certified Tester — Foundation Level</div>
         <div class="cert-org">International Software Testing Qualifications Board</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-badge">ATL</div>
-        <div class="cert-name">Agile Project Management Professional</div>
-        <div class="cert-org">Atlassian</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-badge">AZ</div>
-        <div class="cert-name">Azure DevOps for Beginners</div>
-        <div class="cert-org">Microsoft Azure</div>
       </div>
     </div>
   </div>
