@@ -452,9 +452,8 @@
     ────────────────────────────────────────── */
     #skills { background: var(--bg); }
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      columns: 4;
+      column-gap: 20px;
     }
     .skill-card {
       background: var(--surface);
@@ -463,6 +462,11 @@
       padding: 26px 22px;
       box-shadow: var(--shadow-card);
       transition: box-shadow .25s, transform .25s;
+      break-inside: avoid;
+      margin-bottom: 20px;
+      display: inline-block;
+      width: 100%;
+      vertical-align: top;
     }
     .skill-card:hover {
       box-shadow: var(--shadow-hover);
@@ -1134,7 +1138,7 @@
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 48px 20px; }
       .hero-photo-wrap { display: none; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { columns: 2; }
       .projects-grid { grid-template-columns: 1fr; }
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
       .project-card.flagship .project-body { grid-template-columns: 1fr; }
