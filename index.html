@@ -98,6 +98,16 @@
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--navy); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--navy);
+      cursor: pointer;
+      padding: 6px 4px;
+    }
 
     /* ──────────────────────────────────────────
        HERO
@@ -1136,6 +1146,28 @@
        RESPONSIVE
     ────────────────────────────────────────── */
     @media (max-width: 900px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-card);
+        padding: 8px 24px 12px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--bg);
+        font-size: .78rem;
+      }
       .hero { grid-template-columns: 1fr; padding: 48px 20px; }
       .hero-photo-wrap { display: none; }
       .skills-grid { columns: 2; }
@@ -1153,6 +1185,11 @@
       .exp-dot { display: none; }
     }
 
+    @media (max-width: 480px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .skills-grid { columns: 1; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
@@ -1164,7 +1201,8 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">NSK.qa</a>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#why">Why Me</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -1175,6 +1213,25 @@
     </ul>
   </div>
 </nav>
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    function closeMenu() {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    }
+    toggle.addEventListener('click', function () {
+      var isOpen = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.textContent = isOpen ? '✕' : '☰';
+    });
+    links.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  })();
+</script>
 
 <!-- ── HERO ── -->
 <main>
